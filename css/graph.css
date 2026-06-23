@@ -1,0 +1,84 @@
+/* graph.css */
+
+.nav{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    margin-bottom:20px;
+}
+
+.nav button{
+    flex:1;
+    background:#0f172a;
+    border:1px solid #38f898;
+}
+
+body{
+    margin: 0;
+    font-family: sans-serif;
+    background: radial-gradient(circle, #0f172a, #020617);
+    color: white;
+    text-align: center;
+}
+
+.container{
+    max-width: 420px;
+    margin: auto;
+    padding: 20px;
+}
+
+h1{
+    color: #38f898;
+    text-shadow: 10px 10px #35928000;
+    margin-bottom: 5px;
+}
+
+h2{
+    margin-bottom: 20px;
+}
+
+button{
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #22c55e;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover{
+    transform: scale(1.05);
+}
+
+.month-nav,
+.status,
+.chart-box{
+    background: rgba(255,255,255,0.05);
+    padding: 15px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    margin-bottom: 20px;
+}
+
+.month-nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.status h3{
+    margin: 8px 0;
+}
+
+canvas{
+    max-width: 100%;
+    background: white;
+    border-radius: 12px;
+    padding: 10px;
+    height: 300px;
+}
+「完全に空のとき何もない感」改善
+.hidden{
+    display:none;
+}

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>節約チェッカー</title>
+    <link rel="stylesheet" href="css/login.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div id="login-screen">
+        <h2>節約チェッカー</h2>
+        <div class="card">
+          <input
+            type="text"
+            id="username"
+            placeholder="ユーザー名 (Username)"
+          />
+          <input
+            type="password"
+            id="password"
+            placeholder="パスワード (Password)"
+          />
+
+          <button onclick="handleLogin()" class="btn-tsuika">ログイン</button>
+          <button
+            onclick="handleRegister()"
+            class="btn-ocr"
+            style="margin-top: 8px"
+          >
+            新規登録
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/login.js"></script>
+  </body>
+</html>

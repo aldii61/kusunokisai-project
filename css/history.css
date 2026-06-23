@@ -1,0 +1,174 @@
+/* Global Base / ベース */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Plus Jakarta Sans", "Zen Maru Gothic", sans-serif;
+  background: radial-gradient(circle at top, #0f172a, #020617);
+  color: white;
+  text-align: center;
+  min-height: 100vh;
+}
+
+/* Layout / レイアウト */
+.container {
+  padding: 24px 20px;
+  max-width: 520px;
+  margin: auto;
+}
+
+h1 {
+  margin-bottom: 24px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #38f898;
+  text-shadow: 0 0 15px rgba(56, 248, 152, 0.3);
+}
+
+/* No Data Message / Data Kosong */
+.no-data-msg {
+  text-align: center;
+  color: #9ca3af;
+  margin-top: 40px;
+}
+
+/* History Card / 履歴カード */
+.history-card {
+  margin-bottom: 20px;
+  text-align: left;
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition:
+    border-color 0.3s,
+    transform 0.3s;
+}
+
+.history-card:hover {
+  border-color: rgba(56, 248, 152, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Card Header Layout */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-title {
+  color: #38f898;
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+/* Action Buttons Grid */
+/* Memastikan tombol berjejer lurus ke samping dengan margin kanan seperti semula */
+.button-group {
+  display: block; /* Kembalikan ke susunan blok standar */
+  text-align: right;
+}
+
+/* Tombol 📊 グラフ & 💡 分析 (Kembali ke abu-abu gelap bawaan awal) */
+.btn-action {
+  background: #374151;
+  color: white;
+  border: 1px solid #4b5563;
+  padding: 4px 8px; /* Diperkecil dari 5px 10px menjadi 4px 8px */
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 5px;
+  font-size: 0.75rem; /* Ukuran teks dikecilkan agar tombol menyusut rapi */
+  line-height: 1.2; /* Menjaga tinggi baris teks tetap tipis */
+  display: inline-block;
+}
+
+.btn-action:hover {
+  background: #4b5563;
+}
+
+/* Tombol 🗑️ 削除 (Kembali ke merah pekat kontras bawaan awal) */
+.btn-delete {
+  background: #7f1d1d;
+  color: #fca5a5;
+  border: 1px solid #991b1b;
+  padding: 4px 8px; /* Disamakan agar ukurannya serasi */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.75rem; /* Ukuran teks dikecilkan */
+  line-height: 1.2;
+  display: inline-block;
+}
+
+.btn-delete:hover {
+  background: #991b1b;
+  color: white;
+}
+
+/* Total Price Text */
+.total-text {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 12px 0 6px 0;
+  color: white;
+}
+
+.total-amount-highlight {
+  color: #f87171;
+}
+
+/* Divider Line / 区切り線 */
+.card-divider {
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin: 12px 0;
+}
+
+/* Detail Expense List / 詳細リスト */
+.detail-list {
+  padding-left: 20px;
+  margin-bottom: 0;
+  font-size: 0.95rem;
+  color: #d1d5db;
+  line-height: 1.7;
+  list-style-type: none; /* Menghilangkan titik list bawaan browser agar ikon dompet terlihat rapi */
+}
+
+/* Bottom Back Button Setup / 戻るボタンの配置 */
+.btn-group {
+  margin-top: 24px;
+}
+
+.btn-back {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid #38f898;
+  color: white;
+  padding: 14px;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 1rem;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(56, 248, 152, 0.1);
+}
+
+.btn-back:hover {
+  transform: scale(1.02);
+  background: #38f898;
+  color: #020617;
+  box-shadow: 0 6px 20px rgba(56, 248, 152, 0.3);
+}
+
+.advice-item:last-child:nth-child(odd) {
+  grid-column: span 2;
+  max-width: 100%;
+}

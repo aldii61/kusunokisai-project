@@ -1,0 +1,142 @@
+/* Global Base / ベース */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Plus Jakarta Sans", "Zen Maru Gothic", sans-serif;
+  background: radial-gradient(circle at top, #0f172a, #020617);
+  color: white;
+  text-align: center;
+  min-height: 100vh;
+}
+
+/* Layout / レイアウト */
+.container {
+  padding: 24px 20px;
+  max-width: 520px;
+  margin: auto;
+}
+
+h1 {
+  margin-bottom: 24px;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #38f898;
+  text-shadow: 0 0 15px rgba(56, 248, 152, 0.3);
+}
+
+/* Metric Cards / メトリックカード */
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.metric-card {
+  background: rgba(56, 248, 152, 0.06);
+  border: 1px solid rgba(56, 248, 152, 0.15);
+  border-radius: 14px;
+  padding: 14px 8px;
+  transition:
+    transform 0.3s,
+    border-color 0.3s;
+}
+
+.metric-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(56, 248, 152, 0.4);
+  background: rgba(56, 248, 152, 0.1);
+}
+
+.metric-label {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.metric-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #38f898;
+}
+
+/* Chart Section / グラフ */
+.chart-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 24px;
+  border-radius: 24px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  margin-bottom: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+/* Highlight Box / ハイライト */
+.top-category-box {
+  /* Mengembalikan warna background menjadi kehijauan transparan seperti semula */
+  background: rgba(56, 248, 152, 0.06);
+  border: 1px solid rgba(56, 248, 152, 0.15);
+  border-radius: 18px;
+  padding: 20px;
+  margin-bottom: 24px;
+  transition:
+    background 0.3s,
+    border-color 0.3s;
+}
+
+.top-category-box:hover {
+  /* Efek hover yang serasi dengan kartu metrik atas */
+  background: rgba(56, 248, 152, 0.1);
+  border-color: rgba(56, 248, 152, 0.4);
+}
+
+.top-category-label {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 4px;
+}
+
+/* Tetap mempertahankan hurufnya berwarna merah menyala */
+.top-category-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #f87171;
+  margin-bottom: 2px;
+}
+
+.top-category-amount {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+  opacity: 0.9;
+}
+
+/* Button / ボタン */
+.btn-back {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid #38f898;
+  color: white;
+  padding: 14px;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 1rem;
+  width: 100%;
+  cursor: pointer;
+  margin-bottom: 16px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(56, 248, 152, 0.1);
+}
+
+.btn-back:hover {
+  transform: scale(1.02);
+  background: #38f898;
+  color: #020617;
+  box-shadow: 0 6px 20px rgba(56, 248, 152, 0.3);
+}

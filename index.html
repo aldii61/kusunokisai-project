@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>節約チェッカー | メイン画面</title>
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+
+  <body>
+    <div class="logout-wrapper">
+      <span id="user-display" class="user-status"></span>
+      <button onclick="handleLogout()" class="btn-logout">ログアウト</button>
+    </div>
+
+    <div class="container">
+      <div id="play-screen">
+        <h1 id="title">節約チェッカー</h1>
+        <h2 id="sub-title">支出を入力</h2>
+
+        <div class="card pet-card">
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              gap: 10px;
+              margin-bottom: 15px;
+              border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+              padding-bottom: 10px;
+            "
+          >
+            <span style="font-size: 0.8rem; color: var(--color-text-muted)"
+              >今週の目標予算 :</span
+            >
+            <input
+              type="number"
+              id="weekly-limit-input"
+              value="20000"
+              style="
+                width: 110px;
+                padding: 4px 8px;
+                font-size: 0.85rem;
+                text-align: right;
+              "
+              onchange="saveWeeklyLimit()"
+            />
+          </div>
+
+          <div class="pet-status">
+            <span id="pet-condition">😸 元気 </span>
+            <span id="user-points">🪙 ポイント: 0</span>
+          </div>
+
+          <div class="pet-avatar-wrap">
+            <div class="pet-layer-container">
+              <span id="pet-avatar">😸</span>
+              <span id="pet-wear-head" class="accessory-sticker"></span>
+              <span id="pet-wear-face" class="accessory-sticker"></span>
+            </div>
+          </div>
+
+          <div class="pet-bubble">
+            <p id="pet-message">今週は何円節約できるかニャ？</p>
+          </div>
+
+          <div class="pet-shop-container">
+            <button onclick="toggleShopMenu()" class="btn-shop-toggle">
+              🛒 ショップを開く
+            </button>
+
+            <div
+              id="shop-items-menu"
+              class="shop-items-wrapper"
+              style="display: none"
+            >
+              <span class="pet-shop-title">交換するアイテムを選んでニャ：</span>
+              <div class="shop-buttons-group">
+                <button
+                  class="btn-shop-item"
+                  style="background-color: #64748b"
+                  onclick="buyAccessory('default', 0)"
+                >
+                  ❌ 外す (Lepas)
+                </button>
+                <button
+                  class="btn-shop-item"
+                  onclick="buyAccessory('sunglasses', 30)"
+                >
+                  🕶️ サングラス (30P)
+                </button>
+                <button class="btn-shop-item" onclick="buyAccessory('hat', 60)">
+                  🎩 帽子 (60P)
+                </button>
+                <button
+                  class="btn-shop-item"
+                  onclick="buyAccessory('crown', 120)"
+                >
+                  👑 王冠 (120P)
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <input type="number" id="amount" placeholder="金額 (円)" />
+          <select id="category">
+            <option value="食費">食費</option>
+            <option value="交通費">交通費</option>
+            <option value="娯楽">娯楽</option>
+            <option value="衝動買い">衝動買い</option>
+          </select>
+
+          <div class="input-row">
+            <input
+              type="number"
+              id="sat"
+              placeholder="満足度 (1-5)"
+              min="1"
+              max="5"
+            />
+
+            <label class="round-checkbox-label">
+              <input type="checkbox" id="is-necessary" />
+              <span class="checkmark"></span>
+              <span class="label-text">必要</span>
+            </label>
+          </div>
+
+          <button onclick="addExpense()" class="btn-tsuika">追加</button>
+
+          <button onclick="saveCurrentWeek()" class="btn-save">
+            💾 今週のデータを保存
+          </button>
+        </div>
+
+        <div class="status">
+          <h3 id="aa">合計: <span id="total">0</span> 円</h3>
+          <div id="log"></div>
+        </div>
+
+        <div class="btn-group">
+          <button onclick="goToChart()">📊 グラフ</button>
+          <button onclick="goToAdvice()">💡 アドバイス</button>
+          <button
+            onclick="window.location.href = 'history.html'"
+            class="btn-highlight"
+          >
+            📜 履歴
+          </button>
+          <button
+            onclick="window.location.href = 'page1.html'"
+            class="btn-back"
+          >
+            🔙 モード選択
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/app.js"></script>
+
+    <div id="welcome-modal" class="modal-overlay" style="display: none">
+      <div class="modal-content">
+        <button class="modal-close-btn" onclick="closeWelcomeModal()">
+          &times;
+        </button>
+        <div class="modal-icon" id="modal-icon">🏆</div>
+        <h2 id="modal-title">Minggu Lalu Selesai!</h2>
+        <div class="modal-divider"></div>
+        <p id="modal-message">Memuat laporan performamu...</p>
+        <button class="modal-action-btn" onclick="closeWelcomeModal()">
+          がんばろう！
+        </button>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,75 @@
+<!-- calendar.html -->
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>節約チェッカー | カレンダー</title>
+    <link rel="stylesheet" href="css/calendar.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>節約チェッカー</h1>
+      <h2>カレンダー管理</h2>
+
+      <div class="nav">
+        <button onclick="location.href = 'normal.html'">入力</button>
+        <button onclick="location.href = 'calendar.html'">カレンダー</button>
+        <button onclick="location.href = 'graph.html'">グラフ</button>
+      </div>
+
+      <!-- 月移動 -->
+      <div class="month-nav">
+        <button onclick="prevMonth()">←</button>
+        <h3 id="monthTitle">2026年5月</h3>
+        <button onclick="nextMonth()">→</button>
+      </div>
+
+      <!-- カレンダー -->
+      <div class="calendar-box">
+        <div class="week-header">
+          <div>日</div>
+          <div>月</div>
+          <div>火</div>
+          <div>水</div>
+          <div>木</div>
+          <div>金</div>
+          <div>土</div>
+        </div>
+
+        <div id="calendar" class="calendar-grid"></div>
+      </div>
+
+      <!-- 月収支 -->
+      <div class="status">
+        <h3>収入：<span id="income">0</span> 円</h3>
+        <h3>支出：<span id="expense">0</span> 円</h3>
+        <h3>貯金：<span id="saving">0</span> 円</h3>
+      </div>
+
+      <!-- 表一覧 -->
+      <div class="table-box">
+        <h3>明細一覧</h3>
+
+        <table>
+          <thead>
+            <tr>
+              <th>日付</th>
+              <th>項目</th>
+              <th>金額</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+
+          <tbody id="listBody"></tbody>
+        </table>
+      </div>
+
+      <button onclick="location.href = 'normal.html'">
+        ← 入力ページへ戻る
+      </button>
+    </div>
+
+    <script src="js/calendar.js"></script>
+  </body>
+</html>

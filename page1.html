@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>節約チェッカー | モード選択</title>
+    <link rel="stylesheet" href="css/page1.css" />
+  </head>
+  <body>
+    <div class="logout-wrapper">
+      <span id="user-display" class="user-status"></span>
+      <button onclick="handleLogout()" class="btn-logout">ログアウト</button>
+    </div>
+
+    <div id="mode-selection" class="container">
+      <h1></h1>
+      <h2>どちらのモードで記録しますか？</h2>
+      <div class="card-wrapper">
+        <div class="mode-card mode-card-easy" onclick="startApp('easy')">
+          <h3>🍃 節約チェッカー</h3>
+          <p>週1回、項目ごとに合計を入力するだけ！</p>
+        </div>
+        <div class="mode-card mode-card-normal" onclick="startApp('normal')">
+          <h3>📋 通常</h3>
+          <p>レシート読み取りOK。詳細に記録したい方へ。</p>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/page1.js"></script>
+  </body>
+</html>

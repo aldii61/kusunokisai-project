@@ -1,0 +1,87 @@
+h1 {
+  color: #38f898;
+  text-shadow: 10px 10px #35928000;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: radial-gradient(circle, #0f172a, #020617);
+  color: white;
+  text-align: center;
+}
+
+.container {
+  padding: 20px;
+}
+
+.card-wrapper {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.mode-card {
+  flex: 1;
+  padding: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.mode-card p {
+  font-size: 0.8rem;
+}
+
+.mode-card-easy {
+  border: 2px solid #4caf50;
+}
+
+.mode-card-normal {
+  border: 2px solid #2196f3;
+}
+
+.mode-card:hover {
+  transform: scale(1.03);
+  opacity: 0.9;
+}
+
+/* css/page1.css */
+
+/* Mengatur tata letak status akun di pojok kanan atas */
+.logout-wrapper {
+  display: flex;
+  justify-content: flex-end; /* Dorong isi ke ujung kanan */
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Gaya teks nama user */
+.user-status {
+  font-size: 0.85rem;
+  color: #38f898; /* Warna hijau aplikasi */
+  font-weight: bold;
+}
+
+/* Tombol logout minimalis */
+.btn-logout {
+  background: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  cursor: pointer;
+  width: auto; /* Mencegah tombol melar penuh */
+  transition:
+    opacity 0.15s,
+    transform 0.15s;
+}
+
+.btn-logout:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}

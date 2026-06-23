@@ -1,0 +1,137 @@
+/* calendar.css */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.nav button {
+  flex: 1;
+  background: #0f172a;
+  border: 1px solid #38f898;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: radial-gradient(circle, #0f172a, #020617);
+  color: white;
+  text-align: center;
+}
+
+.container {
+  max-width: 420px;
+  margin: auto;
+  padding: 20px;
+}
+
+h1 {
+  color: #38f898;
+  text-shadow: 10px 10px #35928000;
+  margin-bottom: 5px;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #22c55e;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+.month-nav,
+.calendar-box,
+.status,
+.table-box {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  margin-bottom: 20px;
+}
+
+.month-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.week-header,
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.week-header div {
+  font-weight: bold;
+}
+
+.day {
+  background: #0f172a;
+  min-height: 65px;
+  border-radius: 10px;
+  padding: 4px;
+  font-size: 0.8rem;
+}
+
+.day-number {
+  font-weight: bold;
+  margin-bottom: 3px;
+}
+
+.memo {
+  font-size: 0.7rem;
+  color: #38f898;
+}
+
+.status h3 {
+  margin: 8px 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+th,
+td {
+  padding: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+th {
+  color: #38f898;
+}
+
+td button {
+  padding: 5px 8px;
+  font-size: 0.8rem;
+}
+
+.memo {
+  font-size: 0.8rem;
+  margin-top: 3px;
+  padding: 2px;
+  border-radius: 6px;
+}
+
+.plus {
+  color: #22c55e;
+}
+
+.minus {
+  color: #f87171;
+}
