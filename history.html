@@ -2,19 +2,43 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
     <title>履歴 | 節約チェッカー</title>
-    <link rel="stylesheet" href="css/history.css" />
+
+    <link
+      rel="stylesheet"
+      href="css/history.css"
+    />
   </head>
+
   <body>
     <div class="container">
-      <h1>📜 履歴 / History</h1>
+      <h1 data-i18n="appName">
+        節約チェッカー
+      </h1>
 
-      <div id="history-container"></div>
+      <h2 data-i18n="historyTitle">
+        履歴
+      </h2>
+
+      <div
+        id="history-container"
+        aria-live="polite"
+      ></div>
 
       <div class="btn-group">
-        <button onclick="window.location.href = 'index.html'" class="btn-back">
-          🔙 戻る
+        <button
+          type="button"
+          onclick="window.location.href = 'index.html'"
+          class="btn-back"
+          data-i18n="back"
+        >
+          戻る
         </button>
       </div>
     </div>

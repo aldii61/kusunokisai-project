@@ -1,180 +1,930 @@
-/* ===== BASE / ベース ===== */
+/* ========================================
+   基本設定
+======================================== */
+
+:root {
+  --primary: #cf7185;
+  --primary-dark: #b95f73;
+  --primary-soft: #fff1f4;
+  --primary-pale: #fff8f9;
+  --border: #f0cbd3;
+  --border-light: #f4dde2;
+  --text: #5f464b;
+  --text-sub: #755c61;
+  --white: #ffffff;
+
+  --shadow:
+    0 10px 30px
+    rgba(153, 91, 106, 0.11);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+html,
 body {
-  font-family: "Plus Jakarta Sans", "Zen Maru Gothic", sans-serif;
-  background: radial-gradient(circle at top, #0f172a, #020617);
-  color: white;
-  text-align: center;
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
   min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  background:
+    radial-gradient(
+      circle at top,
+      #ffffff 0%,
+      #fffafb 48%,
+      #fff7f8 100%
+    );
+
+  color: var(--text);
+
+  font-family:
+    "Noto Sans JP",
+    "Hiragino Sans",
+    "Yu Gothic",
+    sans-serif;
 }
 
-/* ===== CONTAINER / コンテナ ===== */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+
+/* ========================================
+   ページ全体
+======================================== */
+
 .container {
-  padding: 24px 20px;
-  max-width: 520px; /* Disamakan lebarnya dengan chart.html agar konsisten */
-  margin: auto;
+  width: 100%;
+  max-width: 1300px;
+  min-height: 100vh;
+
+  margin: 0 auto;
+  padding: 24px 28px 40px;
 }
 
-h1 {
-  margin-bottom: 24px;
-  font-size: 2rem;
-  font-weight: 700;
-  color: #38f898;
-  text-shadow: 0 0 15px rgba(56, 248, 152, 0.3);
-}
+.page-title {
+  margin-bottom: 16px;
 
-/* ===== DIAGNOSIS BOX / 診断ボックス ===== */
-.diagnosis-box {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 24px;
-  padding: 24px;
-  margin-bottom: 20px;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  text-align: left; /* Membuat teks deskripsi jepang lebih mudah dibaca */
-}
+  color: var(--primary);
 
-/* Warna default judul tipe */
-.diagnosis-box h2 {
-  font-size: 1.4rem;
-  font-weight: 700;
-  margin-bottom: 10px;
+  font-size:
+    clamp(1.7rem, 2.7vw, 2.8rem);
+
+  font-weight: 800;
+  letter-spacing: 0.08em;
   text-align: center;
 }
 
-/* Pewarnaan Dinamis Karakter Lewat Class */
-.type-master {
-  color: #38f898;
-  text-shadow: 0 0 10px rgba(56, 248, 152, 0.3);
-}
-.type-danger {
-  color: #f87171;
-  text-shadow: 0 0 10px rgba(248, 113, 113, 0.3);
-}
-.type-balance {
-  color: #60a5fa;
-  text-shadow: 0 0 10px rgba(96, 165, 250, 0.3);
-}
-.type-normal {
-  color: #fbbf24;
-  text-shadow: 0 0 10px rgba(251, 191, 36, 0.3);
+.title-decoration {
+  display: inline-block;
+
+  margin: 0 9px;
+
+  font-size: 0.58em;
+
+  vertical-align: middle;
 }
 
-.diagnosis-box p {
-  color: rgba(255, 255, 255, 0.8);
+
+/* ========================================
+   左右パネル
+======================================== */
+
+.advice-layout {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1.15fr);
+
+  gap: 22px;
+  width: 100%;
+
+  align-items: stretch;
+}
+
+.advice-panel {
+  min-width: 0;
+  height: 100%;
+
+  overflow: hidden;
+
+  border: 1px solid var(--border);
+  border-radius: 18px;
+
+  background:
+    rgba(255, 255, 255, 0.94);
+
+  box-shadow: var(--shadow);
+}
+
+.panel-title {
+  padding: 13px 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #d5788b,
+      #c8657a
+    );
+
+  color: var(--white);
+
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
+.panel-body {
+  min-height: 0;
+
+  padding: 18px 20px;
+}
+
+
+/* ========================================
+   左：ぽぽ先生
+======================================== */
+
+.diagnosis-box {
+  height: 100%;
+}
+
+.teacher-area {
+  display: grid;
+
+  grid-template-columns:
+    190px minmax(0, 1fr);
+
+  gap: 14px;
+
+  width: 100%;
+
+  align-items: center;
+
+  margin-bottom: 14px;
+}
+
+.teacher-img-wrap {
+  display: flex;
+
+  align-items: flex-end;
+  justify-content: center;
+
+  min-height: 205px;
+}
+
+.teacher-img {
+  display: block;
+
+  width: 100%;
+  max-width: 190px;
+  max-height: 215px;
+
+  object-fit: contain;
+  object-position: center bottom;
+}
+
+.teacher-speech {
+  position: relative;
+
+  padding: 17px 18px;
+
+  border: 3px solid #f1bdc8;
+  border-radius: 30px;
+
+  background: #ffffff;
+
+  color: #4d3c40;
+
   font-size: 0.9rem;
-  line-height: 1.7;
-}
-
-/* ===== FUTURE BOX / 未来ボックス ===== */
-.future-box {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 24px;
-  padding: 24px;
-  margin-bottom: 20px;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-.future-box h2 {
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 0.95rem;
-  font-weight: 500;
-  margin-bottom: 6px;
-}
-
-.future-box h1 {
-  color: #38f898;
-  font-size: 2.2rem;
-  font-weight: 700;
-}
-
-/* ===== GRID ITEMS (BARANG IMPIAN) ===== */
-.section-title {
-  font-size: 1.1rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.7);
-  margin: 24px 0 14px;
+  line-height: 1.8;
+  text-align: left;
+
+  box-shadow:
+    0 7px 18px
+    rgba(177, 104, 121, 0.08);
+}
+
+.teacher-speech::before {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+  left: -18px;
+
+  width: 28px;
+  height: 28px;
+
+  transform:
+    translateY(-50%)
+    rotate(45deg);
+
+  border-bottom:
+    3px solid #f1bdc8;
+
+  border-left:
+    3px solid #f1bdc8;
+
+  background: #ffffff;
+}
+
+.teacher-name {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: var(--primary);
+
+  font-weight: 800;
+}
+
+.analysis-section {
+  padding: 14px 10px;
+
+  border-top:
+    2px dashed #efc4cd;
+}
+
+.analysis-section:last-child {
+  padding-bottom: 4px;
+}
+
+.analysis-heading {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  margin-bottom: 10px;
+
+  color: var(--primary);
+
+  font-size: 1rem;
+  font-weight: 800;
   text-align: left;
 }
 
+
+.summary-list {
+  display: grid;
+
+  gap: 7px;
+
+  padding-left: 40px;
+}
+
+.summary-row {
+  display: grid;
+
+  grid-template-columns:
+    1fr auto;
+
+  gap: 14px;
+
+  color: #4e4043;
+
+  font-size: 0.88rem;
+  text-align: left;
+}
+
+.summary-row strong {
+  color: var(--primary-dark);
+
+  font-weight: 800;
+
+  white-space: nowrap;
+}
+
+.improvement-list {
+  display: grid;
+  gap: 12px;
+
+  padding-left: 8px;
+  padding-right: 4px;
+
+  list-style: none;
+}
+
+.improvement-list li {
+  position: relative;
+  padding-left: 32px;
+
+  color: #55464a;
+  font-size: 0.9rem;
+  line-height: 1.75;
+  text-align: left;
+
+  /* 日本語の不自然な折り返しを減らす */
+  line-break: strict;
+  word-break: normal;
+  overflow-wrap: break-word;
+  hanging-punctuation: allow-end;
+}
+
+.improvement-list li::before {
+  content: "✓";
+
+  position: absolute;
+  top: 0.3em;
+  left: 0;
+
+  display: grid;
+  place-items: center;
+
+  width: 20px;
+  height: 20px;
+
+  border-radius: 50%;
+  background: #df8798;
+  color: #ffffff;
+
+  font-size: 0.72rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.week-message {
+  display: grid;
+
+  grid-template-columns:
+    38px minmax(0, 1fr);
+
+  gap: 10px;
+
+  align-items: center;
+
+  margin-top: 2px;
+  padding: 12px 14px;
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff2f4,
+      #fff8f9
+    );
+
+  text-align: left;
+}
+
+
+.week-message h3 {
+  margin-bottom: 3px;
+
+  color: var(--primary);
+
+  font-size: 0.93rem;
+}
+
+.week-message p {
+  color: #57484b;
+
+  font-size: 0.8rem;
+  line-height: 1.55;
+}
+
+.empty-message {
+  display: grid;
+
+  place-items: center;
+
+  min-height: 440px;
+
+  padding: 30px;
+
+  text-align: center;
+}
+
+.empty-message .teacher-img {
+  max-width: 230px;
+
+  margin: 0 auto 15px;
+}
+
+.empty-message h2 {
+  margin-bottom: 8px;
+
+  color: var(--primary);
+}
+
+.empty-message p {
+  line-height: 1.8;
+}
+
+
+/* ========================================
+   右：未来の価値と画像
+======================================== */
+
+.future-box {
+  margin-bottom: 14px;
+  padding: 17px 20px;
+
+  border:
+    1px solid var(--border-light);
+
+  border-radius: 16px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #fffafb
+    );
+
+  text-align: center;
+
+  box-shadow:
+    0 5px 15px
+    rgba(148, 94, 107, 0.06);
+}
+
+.future-box h2 {
+  margin-bottom: 3px;
+
+  color: #544447;
+
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.future-box h1 {
+  margin: 0;
+
+  color: var(--primary);
+
+  font-size:
+    clamp(1.9rem, 3.2vw, 3rem);
+
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.future-box p {
+  color: #5c4b4f;
+
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.section-title {
+  margin-top: 55px;
+  margin-right: 0;
+  margin-bottom: 22px;
+  margin-left: 0;
+
+  color: var(--primary);
+  font-size: 1.15rem;
+  font-weight: 800;
+  line-height: 1.5;
+  text-align: center;
+}
 .items-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Membagi menjadi 2 kolom sejajar */
-  gap: 14px;
-  margin-bottom: 24px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+
+  width: 100%;
+  min-width: 0;
 }
 
 .advice-item {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 16px;
-  padding: 12px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  transition:
-    transform 0.3s,
-    border-color 0.3s;
-}
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
 
-.advice-item:hover {
-  transform: translateY(-3px);
-  border-color: rgba(56, 248, 152, 0.25);
-  background: rgba(56, 248, 152, 0.02);
+  overflow: hidden;
+
+  border: 1px solid #f0dce1;
+  border-radius: 14px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 5px 13px
+    rgba(108, 75, 83, 0.07);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .advice-item p {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: white;
-  margin-bottom: 8px;
+  min-height: 45px;
+  margin: 0;
+  padding: 8px 8px 9px;
+
+  color: #514347;
+
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.45;
+  text-align: center;
 }
 
 .summary-img {
+  display: block;
+
   width: 100%;
-  height: 100px;
-  object-fit: cover; /* Memotong gambar secara proporsional agar tingginya seragam */
-  border-radius: 10px;
+  max-width: 100%;
+  height: 140px;
+
+  object-fit: cover;
+
+  margin: 0;
+  border-radius: 0;
+
+  transition:
+    transform 0.35s ease,
+    filter 0.35s ease;
 }
 
-/* ===== BUTTONS / ボタン ===== */
+.advice-right,
+#future {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.no-future-item {
+  grid-column: 1 / -1;
+
+  display: grid;
+
+  place-items: center;
+
+  min-height: 250px;
+
+  padding: 25px;
+
+  border: 1px dashed var(--border);
+  border-radius: 14px;
+
+  color: #a3838b;
+
+  text-align: center;
+}
+
+
+/* ========================================
+   ボタン
+======================================== */
+
 .btn-group {
-  margin-top: 24px;
+  display: flex;
+
+  justify-content: center;
+
+  margin-top: 14px;
 }
 
 .btn-back {
-  background: rgba(255, 255, 255, 0.05);
-  border: 2px solid #38f898;
-  color: white;
-  padding: 14px;
-  border-radius: 14px;
-  font-weight: 700;
-  font-size: 1rem;
-  width: 100%;
+  width: min(360px, 100%);
+
+  padding: 10px 20px;
+
+  border: none;
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #d67589,
+      #c86076
+    );
+
+  color: #ffffff;
+
+  font-weight: 800;
+
   cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 4px 12px rgba(56, 248, 152, 0.1);
+
+  box-shadow:
+    0 7px 16px
+    rgba(178, 92, 112, 0.2);
+
+  transition:
+    transform 0.18s ease,
+    opacity 0.18s ease;
 }
 
 .btn-back:hover {
-  transform: scale(1.02);
-  background: #38f898;
-  color: #020617;
-  box-shadow: 0 6px 20px rgba(56, 248, 152, 0.3);
+  transform: translateY(-2px);
+
+  opacity: 0.92;
 }
 
-.advice-item:last-child:nth-child(odd) {
-  grid-column: span 2;
-  max-width: 100%;
+.btn-back:active {
+  transform: translateY(0);
+}
+
+
+/* ========================================
+   ホバー
+======================================== */
+
+@media (hover: hover) {
+  .advice-item:hover {
+    transform:
+      translateY(-4px);
+
+    box-shadow:
+      0 11px 24px
+      rgba(104, 70, 78, 0.15);
+  }
+
+  .advice-item:hover .summary-img {
+    transform: scale(1.035);
+
+    filter:
+      brightness(1.05)
+      saturate(1.05);
+  }
+}
+@media (max-width: 1050px) {
+  .advice-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .container {
+    max-width: 760px;
+  }
+}
+
+.analysis-icon {
+  display: inline-grid;
+  place-items: center;
+
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+
+  border-radius: 50%;
+  background: #fff1f4;
+
+  color: #cf7185;
+  font-size: 1.3rem;
+
+  box-shadow:
+    0 4px 10px
+    rgba(207, 113, 133, 0.14);
+}
+
+.week-message-icon {
+  display: inline-grid;
+  place-items: center;
+
+  width: 44px;
+  height: 44px;
+
+  border-radius: 50%;
+  background: #ffe7ec;
+
+  color: #cf7185;
+  font-size: 1.35rem;
+}
+
+/* ========================================
+   スマホ対応
+======================================== */
+
+@media (max-width: 600px) {
+
+  .container {
+    padding: 16px 12px 28px;
+  }
+
+  .page-title {
+    margin-bottom: 14px;
+
+    font-size: 1.55rem;
+    letter-spacing: 0.04em;
+  }
+
+  .title-decoration {
+    margin: 0 4px;
+    font-size: 0.45em;
+  }
+
+
+  /* =========================
+     パネル
+  ========================= */
+
+  .panel-title {
+    padding: 12px 10px;
+
+    font-size: 1rem;
+  }
+
+  .panel-body {
+    padding: 16px 14px;
+  }
+
+
+  /* =========================
+     ぽぽ先生
+  ========================= */
+
+  .teacher-area {
+    grid-template-columns: 1fr;
+
+    gap: 8px;
+
+    margin-bottom: 16px;
+  }
+
+  .teacher-img-wrap {
+    min-height: auto;
+
+    align-items: center;
+  }
+
+  .teacher-img {
+    width: 150px;
+    max-width: 150px;
+    max-height: 180px;
+
+    margin: 0 auto;
+  }
+
+  .teacher-speech {
+    width: 100%;
+
+    padding: 14px 16px;
+
+    border-width: 2px;
+    border-radius: 20px;
+
+    font-size: 0.88rem;
+    line-height: 1.7;
+  }
+
+
+  /* 吹き出しの三角を上向きにする */
+  .teacher-speech::before {
+    top: -11px;
+    left: 50%;
+
+    width: 20px;
+    height: 20px;
+
+    transform:
+      translateX(-50%)
+      rotate(135deg);
+
+    border-width: 2px;
+  }
+
+
+  /* =========================
+     振り返り
+  ========================= */
+
+  .analysis-section {
+    padding: 14px 2px;
+  }
+
+  .analysis-heading {
+    font-size: 0.95rem;
+  }
+
+  .summary-list {
+    padding-left: 8px;
+  }
+
+  .summary-row {
+    gap: 8px;
+
+    font-size: 0.84rem;
+  }
+
+
+  /* =========================
+     改善ポイント
+  ========================= */
+
+  .improvement-list {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .improvement-list li {
+    padding-left: 29px;
+
+    font-size: 0.85rem;
+    line-height: 1.7;
+  }
+
+
+  /* =========================
+     今週のメッセージ
+  ========================= */
+
+  .week-message {
+    grid-template-columns:
+      36px minmax(0, 1fr);
+
+    padding: 11px 12px;
+  }
+
+
+  /* =========================
+     未来価値
+  ========================= */
+
+  .future-box {
+    padding: 15px 12px;
+  }
+
+  .future-box h1 {
+    font-size: 1.8rem;
+  }
+
+  .section-title {
+    margin-top: 32px;
+    margin-bottom: 16px;
+
+    font-size: 1rem;
+  }
+
+
+  /* 画像カードはスマホでも2列 */
+  .items-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 8px;
+  }
+
+  .summary-img {
+    height: 110px;
+  }
+
+  .advice-item p {
+    min-height: 42px;
+
+    padding: 7px 5px;
+
+    font-size: 0.78rem;
+  }
+
+
+  /* =========================
+     戻るボタン
+  ========================= */
+
+  .btn-group {
+    margin-top: 16px;
+  }
+
+  .btn-back {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .container {
+    padding: 24px 12px 28px;
+  }
+
+  .page-title {
+    margin-top: 0;
+    margin-bottom: 18px;
+
+    font-size: 1.4rem;
+    line-height: 1.4;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    white-space: nowrap;
+  }
+
+  .title-decoration {
+    margin: 0;
+
+    font-size: 0.4em;
+  }
 }

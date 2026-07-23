@@ -2,31 +2,124 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
     <title>節約チェッカー | モード選択</title>
-    <link rel="stylesheet" href="css/page1.css" />
+
+    <link
+      rel="stylesheet"
+      href="css/page1.css"
+    />
+
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://unpkg.com/lucide@latest"></script>
   </head>
+
   <body>
     <div class="logout-wrapper">
-      <span id="user-display" class="user-status"></span>
-      <button onclick="handleLogout()" class="btn-logout">ログアウト</button>
+      <span
+        id="user-display"
+        class="user-status"
+      ></span>
+
+      <button
+        type="button"
+        onclick="handleLogout()"
+        class="btn-logout"
+        data-i18n="logout"
+      >
+        ログアウト
+      </button>
     </div>
 
-    <div id="mode-selection" class="container">
-      <h1></h1>
-      <h2>どちらのモードで記録しますか？</h2>
+    <div
+      id="mode-selection"
+      class="container"
+    >
+      <h2 data-i18n="modeQuestion">
+        どちらのモードで記録しますか？
+      </h2>
+      <label class="language-area">
+      <span data-i18n="languageTitle">
+        言語を選ぶ
+      </span>
+
+      <select
+        id="language-select"
+        onchange="changeLanguage()"
+        aria-label="表示言語"
+      >
+        <option value="ja">日本語</option>
+        <option value="en">English</option>
+        <option value="my">မြန်မာဘာသာ</option>
+        <option value="id">Bahasa Indonesia</option>
+        <option value="zh-CN">简体中文</option>
+        <option value="zh-TW">繁體中文</option>
+        <option value="ru">Русский</option>
+        <option value="vi">Tiếng Việt</option>
+        <option value="ko">한국어</option>
+        <option value="th">ภาษาไทย</option>
+        <option value="es">Español</option>
+        <option value="pt-BR">Português</option>
+      </select>
+    </label>
+
+
       <div class="card-wrapper">
-        <div class="mode-card mode-card-easy" onclick="startApp('easy')">
-          <h3>🍃 節約チェッカー</h3>
-          <p>週1回、項目ごとに合計を入力するだけ！</p>
+        <div
+          class="mode-card mode-card-easy"
+          onclick="startApp('easy')"
+        >
+          <h3 data-i18n="savingChecker">
+            節約チェッカー
+          </h3>
+
+          <p data-i18n="savingCheckerDescription">
+            項目ごとに簡単入力
+          </p>
         </div>
-        <div class="mode-card mode-card-normal" onclick="startApp('normal')">
-          <h3>📋 通常</h3>
-          <p>レシート読み取りOK。詳細に記録したい方へ。</p>
+
+        <div
+          class="mode-card mode-card-normal"
+          onclick="startApp('normal')"
+        >
+          <h3 data-i18n="householdMode">
+            家計簿モード
+          </h3>
+
+          <p data-i18n="householdModeDescription">
+            詳細に記録できます
+          </p>
         </div>
       </div>
+
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <script src="js/page1.js"></script>
+
+    <script>
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+    </script>
   </body>
 </html>

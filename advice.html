@@ -2,27 +2,121 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>アドバイス | 節約チェッカー</title>
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <title>分析 | 節約チェッカー</title>
+
     <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Zen+Maru+Gothic:wght@500;700&display=swap"
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/advice.css?v=2" />
+
+    <link
+      rel="stylesheet"
+      href="css/advice.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
   </head>
+
   <body>
-    <div class="container">
-      <h1>💡 アドバイス</h1>
+    <main class="container">
 
-      <div id="result-desc"></div>
+      <!-- ページタイトル -->
+      <h1 class="page-title">
+        <span
+          class="title-decoration"
+          aria-hidden="true"
+        >
+          ✦　✦　✦
+        </span>
 
-      <div id="future"></div>
+        <span data-i18n="analysisPageTitle">
+          支出の分析
+        </span>
 
-      <div class="btn-group">
-        <button onclick="goBackSmart()" class="btn-back">🔙 戻る</button>
+        <span
+          class="title-decoration"
+          aria-hidden="true"
+        >
+          ✦　✦　✦
+        </span>
+      </h1>
+
+      <!-- 分析エリア -->
+      <div class="advice-layout">
+
+        <!-- 左側 -->
+        <section class="advice-panel advice-left">
+          <h2
+            class="panel-title"
+            data-i18n="weeklyExpenseAnalysis"
+          >
+            今週の支出の分析
+          </h2>
+
+          <!-- JavaScriptでぽぽ先生の分析内容を表示 -->
+          <div
+            id="result-desc"
+            class="panel-body"
+            aria-live="polite"
+            aria-label="支出の分析結果"
+            data-i18n-aria-label="analysisResult"
+          ></div>
+        </section>
+
+        <!-- 右側 -->
+        <section class="advice-panel advice-right">
+          <h2
+            class="panel-title"
+            data-i18n="continueAtThisPace"
+          >
+            このペースで続けると…
+          </h2>
+
+          <!-- JavaScriptで未来の価値と画像を表示 -->
+          <div
+            id="future"
+            class="panel-body"
+            aria-live="polite"
+            aria-label="今の支出を続けた場合の結果"
+            data-i18n-aria-label="futureValueResult"
+          ></div>
+        </section>
       </div>
-    </div>
 
-    <script src="js/advice-page.js?v=2"></script>
+      <!-- 戻るボタン -->
+      <div class="btn-group">
+        <button
+          type="button"
+          onclick="goBackSmart()"
+          class="btn-back"
+          data-i18n="back"
+        >
+          戻る
+        </button>
+      </div>
+    </main>
+
+    <script src="js/advice-messages.js"></script>
+    <script src="js/advice-page.js"></script>
   </body>
 </html>

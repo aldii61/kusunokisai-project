@@ -1,116 +1,335 @@
-#login-screen {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+/* login.css - soft rounded style */
+
+@import url(
+  "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
+);
+
+:root {
+  --bg: #f8f5f6;
+  --card: #ffffff;
+
+  --primary: #d58ba4ab;
+  --primary-dark: #b56f89;
+  --primary-light: #f7e9ee;
+
+  --text: #77506fe4;
+  --text-sub: #7d7378;
+  --line: #eadfe3;
+
+  --shadow:
+    0 14px 32px rgba(100, 73, 84, 0.08);
 }
 
-.card {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 30px;
-  border-radius: 20px;
-  width: 300px;
-  backdrop-filter: blur(10px);
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-#message {
-  font-size: 0.9rem;
-  color: #666;
-}
-
-.card input {
-  width: 90%;
-  margin: 10px 0;
+html,
+body {
+  width: 100%;
+  min-height: 100%;
 }
 
 body {
-  margin: 0;
-  font-family: sans-serif;
-  background: radial-gradient(circle, #0f172a, #020617);
-  color: white;
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(213, 139, 164, 0.12),
+      transparent 35%
+    ),
+    var(--bg);
+
+  color: var(--text);
+
+  font-family:
+    "Noto Sans JP",
+    sans-serif;
+
   text-align: center;
+  -webkit-font-smoothing: antialiased;
 }
 
-#play-screen,
-#result-screen {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 20px;
-  border-radius: 20px;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  min-height: 100vh;
+
+  padding: 32px 20px;
+}
+
+#login-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+}
+.card input:first-of-type {
+  margin-bottom: 10px;
+  }
+
+.card {
+  width: 100%;
+  max-width: 380px;
+
+  padding: 38px 34px 32px;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  border: 1px solid rgba(234, 223, 227, 0.9);
+  border-radius: 26px;
+
+  box-shadow: var(--shadow);
+}
+
+.card h1,
+.card h2,
+#login-screen h1,
+#login-screen h2 {
+  margin-bottom: 30px;
+
+  color: var(--text);
+
+  font-size: 2.5rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
 }
 
 .input-area {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 30px;
+  width: 100%;
 }
 
-input,
-select {
-  background: #0f172a;
-  color: white;
-}
-
-button {
-  font-weight: bold;
-}
-
-.container {
-  padding: 20px;
-  max-width: 420px;
-  margin: auto;
-  height: 100vh; /* Full tinggi layar / 画面の高さいっぱいに表示 */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-html,
-body {
-  height: 100%;
-  margin: 0;
-  overflow: hidden; /* Nonaktifkan scroll / スクロールを無効にする */
-}
-
-h2 {
-  color: #38f898;
-  text-shadow: 10px 10px #35928000;
-}
-
+.card input,
+.card select,
+.card textarea,
 input,
 select,
-button {
-  padding: 10px;
-  margin: 5px;
-  border-radius: 8px;
-  border: none;
+textarea {
+  width: 100%;
+  min-height: 52px;
+
+  padding: 13px 16px;
+
+  background: #fcfafb;
+  color: var(--text);
+
+  border: 1.5px solid var(--line);
+  border-radius: 14px;
+
+  font-size: 0.96rem;
+  font-weight: 400;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
 }
 
-button {
-  background: #22c55e;
-  color: white;
+input::placeholder,
+textarea::placeholder {
+  color: #aaa1a5;
+}
+
+input:hover,
+select:hover,
+textarea:hover {
+  border-color: #dbcbd1;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+
+  background: #ffffff;
+
+  border-color: var(--primary);
+
+  box-shadow:
+    0 0 0 4px rgba(213, 139, 164, 0.12);
+
+  transform: translateY(-1px);
+}
+
+select {
   cursor: pointer;
 }
 
+select option {
+  background: #ffffff;
+  color: var(--text);
+}
+
+.card button,
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  min-height: 54px;
+
+  margin-top: 8px;
+  padding: 14px 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--primary),
+      #cf809b
+    );
+
+  color: #ffffff;
+
+  border: none;
+  border-radius: 14px;
+
+  font-size: 0.98rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 18px rgba(181, 111, 137, 0.18);
+
+  transition:
+    box-shadow 0.2s ease,
+    filter 0.2s ease,
+    transform 0.2s ease;
+}
+
+.card button:hover,
 button:hover {
-  transform: scale(1.05);
+  filter: brightness(0.98);
+
+  box-shadow:
+    0 10px 22px rgba(181, 111, 137, 0.22);
+
+  transform: translateY(-2px);
 }
 
-#log p {
-  animation: pop 0.2s ease;
+.card button:active,
+button:active {
+  transform: scale(0.985);
 }
 
-@keyframes pop {
-  0% {
-    transform: scale(1);
+#message {
+  min-height: 1.5em;
+
+  margin-top: 18px;
+
+  color: var(--text-sub);
+
+  font-size: 0.84rem;
+  line-height: 1.6;
+}
+
+.login-links {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  margin-top: 26px;
+}
+
+.login-links a {
+  color: var(--text-sub);
+
+  font-size: 0.86rem;
+  text-decoration: none;
+
+  transition: color 0.2s ease;
+}
+
+.login-links a:hover {
+  color: var(--primary-dark);
+}
+
+#play-screen,
+#result-screen {
+  width: 100%;
+  max-width: 420px;
+
+  padding: 30px;
+
+  background: var(--card);
+
+  border: 1px solid var(--line);
+  border-radius: 24px;
+
+  box-shadow: var(--shadow);
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline:
+    3px solid rgba(213, 139, 164, 0.25);
+
+  outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 24px 16px;
   }
-  50% {
-    transform: scale(1.2);
-    color: #f87171;
+
+  .card {
+    max-width: 100%;
+
+    padding: 34px 22px 26px;
+
+    border-radius: 22px;
   }
-  100% {
-    transform: scale(1);
+
+  .card h1,
+  .card h2,
+  #login-screen h1,
+  #login-screen h2 {
+    margin-bottom: 26px;
+
+    font-size: 1.65rem;
   }
+
+  .card input,
+  .card select,
+  .card textarea,
+  input,
+  select,
+  textarea {
+    min-height: 50px;
+
+    font-size: 16px;
+
+    border-radius: 13px;
+  }
+
+  .card button,
+  button {
+    min-height: 52px;
+
+    border-radius: 13px;
+  }
+  
 }

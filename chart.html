@@ -2,55 +2,132 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
     <title>グラフ | 節約チェッカー</title>
-    <!-- Tambahan Google Fonts agar tipografi aplikasi terlihat premium -->
+
     <link
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Zen+Maru+Gothic:wght@500;700&display=swap"
       rel="stylesheet"
     />
-    <!-- Only load chart.css / chart.cssのみを読み込む -->
-    <link rel="stylesheet" href="css/chart.css" />
+
+    <link
+      rel="stylesheet"
+      href="css/chart.css"
+    />
   </head>
+
   <body>
     <div class="container">
-      <h1>📊 グラフ</h1>
+      <h1 data-i18n="appName">
+        節約チェッカー
+      </h1>
 
-      <!-- Metric cards / メトリックカード -->
+      <h2 data-i18n="graphTitle">
+        グラフ
+      </h2>
+
+      <!-- メトリックカード -->
       <div class="metric-grid">
         <div class="metric-card">
-          <p class="metric-label">今週の合計</p>
-          <p class="metric-value" id="metric-total">0円</p>
+          <p
+            class="metric-label"
+            data-i18n="weeklyTotal"
+          >
+            今週の合計
+          </p>
+
+          <p
+            class="metric-value"
+            id="metric-total"
+          >
+            0円
+          </p>
         </div>
+
         <div class="metric-card">
-          <p class="metric-label">一番多い出費</p>
-          <p class="metric-value" id="metric-top">-</p>
+          <p
+            class="metric-label"
+            data-i18n="largestExpense"
+          >
+            一番多い出費
+          </p>
+
+          <p
+            class="metric-value"
+            id="metric-top"
+          >
+            -
+          </p>
         </div>
+
         <div class="metric-card">
-          <p class="metric-label">カテゴリ数</p>
-          <p class="metric-value" id="metric-count">0</p>
+          <p
+            class="metric-label"
+            data-i18n="categoryCount"
+          >
+            カテゴリ数
+          </p>
+
+          <p
+            class="metric-value"
+            id="metric-count"
+          >
+            0
+          </p>
         </div>
       </div>
 
-      <!-- Pie chart / 円グラフ -->
+      <!-- 円グラフ -->
       <div class="chart-card">
-        <canvas id="chart"></canvas>
+        <canvas
+          id="chart"
+          data-i18n-aria-label="expenseChart"
+          aria-label="支出カテゴリ別グラフ"
+        ></canvas>
       </div>
 
-      <!-- Top category / 一番多いカテゴリ -->
+      <!-- 一番多いカテゴリ -->
       <div class="top-category-box">
-        <p class="top-category-label">今週一番使ったのは</p>
-        <p class="top-category-value" id="top-category">-</p>
-        <p class="top-category-amount" id="top-amount">0円</p>
+        <p
+          class="top-category-label"
+          data-i18n="mostSpentCategory"
+        >
+          今週一番使ったのは
+        </p>
+
+        <p
+          class="top-category-value"
+          id="top-category"
+        >
+          -
+        </p>
+
+        <p
+          class="top-category-amount"
+          id="top-amount"
+        >
+          0円
+        </p>
       </div>
 
-      <!-- Back button / 戻るボタン -->
+      <!-- 戻るボタン -->
       <div class="btn-group">
-        <button onclick="goBackSmart()" class="btn-back">🔙 戻る</button>
+        <button
+          type="button"
+          onclick="goBackSmart()"
+          class="btn-back"
+          data-i18n="back"
+        >
+          戻る
+        </button>
       </div>
     </div>
 
-    <!-- Load Chart.js duluan baru logic script kita -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/chart-page.js"></script>
   </body>

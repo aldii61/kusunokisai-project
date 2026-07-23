@@ -2,64 +2,272 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
     <title>節約チェッカー | 家計簿モード</title>
-    <link rel="stylesheet" href="css/normal.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="css/normal.css"
+    />
   </head>
+
   <body>
-    <div class="logout-wrapper">
-      <span id="user-display" class="user-status"></span>
-      <button onclick="handleLogout()" class="btn-logout">ログアウト</button>
-    </div>
+    <!-- =========================
+         ログインユーザー・ログアウト
+    ========================== -->
+    <header class="logout-wrapper">
+      <button
+        type="button"
+        class="btn-back-mode"
+        onclick="location.href='page1.html'"
+      >
 
-    <div class="container">
-      <h1>節約チェッカー</h1>
-      <h2>家計簿モード</h2>
+        <span data-i18n="backToMode">
+          ←モード選択画面に戻る
+        </span>
+      </button>
 
-      <div class="nav">
-        <button onclick="location.href = 'normal.html'">入力</button>
-        <button onclick="location.href = 'calendar.html'">カレンダー</button>
-        <button onclick="location.href = 'graph.html'">グラフ</button>
+      <div class="account-area">
+        <span
+          id="user-display"
+          class="user-status"
+        ></span>
+
+        <button
+          type="button"
+          class="btn-logout"
+          onclick="handleLogout()"
+        >
+
+          <span data-i18n="logout">
+            ログアウト
+          </span>
+        </button>
+      </div>
+    </header>
+
+    <!-- =========================
+         メイン画面
+    ========================== -->
+    <main class="container">
+      <div class="page-heading">
+        <h1 data-i18n="appTitle">
+          節約チェッカー
+        </h1>
+
+        <p data-i18n="householdMode">
+          家計簿モード
+        </p>
       </div>
 
-      <div class="card">
-        <div class="input-area">
-          <input type="date" id="date" />
+      <!-- =========================
+           ナビゲーション
+      ========================== -->
+      <nav
+        class="nav"
+        aria-label="メインメニュー"
+        data-i18n-aria-label="mainMenu"
+      >
+        <button
+          type="button"
+          class="nav-btn active"
+          disabled
+          aria-current="page"
+          data-i18n="input"
+        >
+          入力
+        </button>
 
-          <select id="type" onchange="changeCategory()">
-            <option value="支出">支出</option>
-            <option value="収入">収入</option>
+        <button
+          type="button"
+          class="nav-btn"
+          onclick="location.href='calendar.html'"
+          data-i18n="calendar"
+        >
+          カレンダー
+        </button>
+
+        <button
+          type="button"
+          class="nav-btn"
+          onclick="location.href='graph.html'"
+          data-i18n="graph"
+        >
+          グラフ
+        </button>
+      </nav>
+
+      <!-- =========================
+           入力カード
+      ========================== -->
+      <section class="card">
+        <div class="input-area">
+
+          <!-- 日付 -->
+          <input
+            type="date"
+            id="date"
+            aria-label="日付"
+            data-i18n-aria-label="date"
+          />
+
+          <!-- 収入・支出 -->
+          <select
+            id="type"
+            onchange="changeCategory()"
+            aria-label="収入または支出"
+            data-i18n-aria-label="typeSelection"
+          >
+            <option
+              value="支出"
+              data-i18n="expense"
+            >
+              支出
+            </option>
+
+            <option
+              value="収入"
+              data-i18n="income"
+            >
+              収入
+            </option>
           </select>
 
-          <select id="category"></select>
+          <!-- =========================
+               カテゴリ選択
+          ========================== -->
+          <div class="category-select-row">
+            <div class="category-select-wrap">
+              <select
+                id="category"
+                aria-label="カテゴリ"
+                data-i18n-aria-label="category"
+              ></select>
+            </div>
 
-          <input type="number" id="amount" placeholder="金額（円）" />
+            <button
+              type="button"
+              class="category-edit-button"
+              onclick="location.href='category.html?from=household'"
+              data-i18n="editCategories"
+            >
+              カテゴリ編集
+            </button>
+          </div>
+
+          <!-- 金額 -->
+          <input
+            type="number"
+            id="amount"
+            placeholder="金額（円）"
+            data-i18n-placeholder="amountPlaceholder"
+            aria-label="金額"
+            data-i18n-aria-label="amount"
+          />
+
+          <!-- メモ -->
           <input
             type="text"
             id="memo"
             placeholder="メモ（例：大宮まで、友達ランチ）"
+            data-i18n-placeholder="memoPlaceholder"
+            aria-label="メモ"
+            data-i18n-aria-label="memo"
           />
 
-          <button onclick="addData()">追加</button>
-          <button id="startBtn" onclick="startCamera()">カメラ起動</button>
+          <!-- 追加 -->
+          <button
+            type="button"
+            onclick="addData()"
+            data-i18n="add"
+          >
+            追加
+          </button>
+
+          <!-- カメラ起動ボタン -->
+          <button
+            type="button"
+            id="startBtn"
+            data-i18n="readReceipt"
+          >
+            レシートを読み取る
+          </button>
         </div>
+      </section>
+    </main>
+
+    <!-- =========================
+         全画面カメラ
+    ========================== -->
+    <div
+      id="cameraScreen"
+      class="camera-screen"
+    >
+      <div class="camera-header">
+        <button
+          type="button"
+          id="closeCameraBtn"
+          class="close-camera-btn"
+          data-i18n="back"
+        >
+          ← 戻る
+        </button>
+
+        <p data-i18n="alignReceipt">
+          レシートを枠内に合わせてください
+        </p>
       </div>
 
-      <div class="sub-nav">
-        <button class="btn-mode" onclick="location.href = 'page1.html'">
-          🔙 モード選択
+      <!-- カメラ表示部分 -->
+      <div class="camera-wrap">
+        <video
+          id="camera"
+          autoplay
+          muted
+          playsinline
+          aria-label="レシート撮影用カメラ"
+          data-i18n-aria-label="receiptCamera"
+        ></video>
+
+        <div class="scan-frame"></div>
+
+        <p
+          id="scanText"
+          data-i18n="startingCamera"
+        >
+          カメラを起動しています
+        </p>
+      </div>
+
+      <!-- カメラ操作 -->
+      <div class="camera-actions">
+        <button
+          type="button"
+          id="captureBtn"
+          class="capture-btn"
+          data-i18n="captureNow"
+        >
+          今すぐ読み取る
         </button>
       </div>
-
-      <div class="camera-wrap" id="cameraWrap" style="display: none">
-        <video id="camera" autoplay playsinline></video>
-        <div class="scan-frame"></div>
-        <div id="scanText">レシートを枠に合わせてください</div>
-      </div>
     </div>
-    <canvas id="canvas" style="display: none"></canvas>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- 撮影用canvas -->
+    <canvas
+      id="canvas"
+      hidden
+    ></canvas>
+
     <script src="js/normal.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
   </body>
 </html>

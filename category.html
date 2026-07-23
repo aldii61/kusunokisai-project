@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <title>カテゴリ管理 | 節約チェッカー</title>
+
+    <link rel="stylesheet" href="css/category.css" />
+  </head>
+
+  <body>
+    <main class="container">
+      <!-- ==============================
+           ヘッダー
+      ============================== -->
+
+      <header class="page-header">
+        <div class="title-area">
+          <p class="app-name" data-i18n="appName">
+            節約チェッカー・家計簿
+          </p>
+
+          <h1 data-i18n="pageTitle">
+            カテゴリ管理
+          </h1>
+
+          <p class="page-description" data-i18n="pageDescription">
+            各モードで使用するカテゴリを追加・編集・削除できます。
+          </p>
+        </div>
+
+        <div class="header-actions">
+      <button
+        type="button"
+        id="back-button"
+        class="back-button"
+        data-i18n="back"
+      >
+       戻る
+     </button>
+    </div>
+
+      </header>
+
+      <!-- ==============================
+           メッセージ
+      ============================== -->
+
+      <div
+        id="message-area"
+        class="message-area"
+        role="status"
+        aria-live="polite"
+        hidden
+      ></div>
+
+      <!-- ==============================
+           カテゴリ一覧
+      ============================== -->
+
+      <section class="mode-grid">
+        <!-- 節約チェッカーモード -->
+
+        <article class="mode-card">
+          <div class="mode-card-header">
+            <p class="mode-label">
+              SAVINGS CHECKER
+            </p>
+
+            <h2 data-i18n="checkerMode">
+              節約チェッカーモード
+            </h2>
+
+            <p
+              class="mode-description"
+              data-i18n="checkerDescription"
+            >
+              満足度を記録する支出で使用するカテゴリです。
+            </p>
+          </div>
+
+          <div class="category-section">
+            <div class="category-heading">
+              <h3 data-i18n="expenseCategory">
+                支出カテゴリ
+              </h3>
+
+              <button
+                type="button"
+                class="add-button"
+                data-mode="checker"
+                data-type="expense"
+              >
+                <span aria-hidden="true">＋</span>
+
+                <span data-i18n="addCategory">
+                  カテゴリを追加
+                </span>
+              </button>
+            </div>
+
+            <div
+              id="checker-expense-list"
+              class="category-list"
+            ></div>
+          </div>
+        </article>
+
+        <!-- 家計簿モード -->
+
+        <article class="mode-card">
+          <div class="mode-card-header">
+            <p class="mode-label">
+              HOUSEHOLD BUDGET
+            </p>
+
+            <h2 data-i18n="householdMode">
+              家計簿モード
+            </h2>
+
+            <p
+              class="mode-description"
+              data-i18n="householdDescription"
+            >
+              通常の家計簿入力で使用するカテゴリです。
+            </p>
+          </div>
+
+          <!-- 家計簿モード・支出 -->
+
+          <div class="category-section">
+            <div class="category-heading">
+              <h3 data-i18n="expenseCategory">
+                支出カテゴリ
+              </h3>
+
+              <button
+                type="button"
+                class="add-button"
+                data-mode="household"
+                data-type="expense"
+              >
+                <span aria-hidden="true">＋</span>
+
+                <span data-i18n="addCategory">
+                  カテゴリを追加
+                </span>
+              </button>
+            </div>
+
+            <div
+              id="household-expense-list"
+              class="category-list"
+            ></div>
+          </div>
+
+          <!-- 家計簿モード・収入 -->
+
+          <div class="category-section income-section">
+            <div class="category-heading">
+              <h3 data-i18n="incomeCategory">
+                収入カテゴリ
+              </h3>
+
+              <button
+                type="button"
+                class="add-button"
+                data-mode="household"
+                data-type="income"
+              >
+                <span aria-hidden="true">＋</span>
+
+                <span data-i18n="addCategory">
+                  カテゴリを追加
+                </span>
+              </button>
+            </div>
+
+            <div
+              id="household-income-list"
+              class="category-list"
+            ></div>
+          </div>
+        </article>
+      </section>
+
+      <!-- ==============================
+           カテゴリ追加・編集フォーム
+      ============================== -->
+
+      <section
+        id="category-editor"
+        class="editor-card"
+        hidden
+      >
+        <div class="editor-header">
+          <div>
+            <p
+              id="editor-context"
+              class="editor-context"
+            ></p>
+
+            <h2 id="editor-title">
+              カテゴリを追加
+            </h2>
+
+            <p
+              class="editor-description"
+              data-i18n="editorDescription"
+            >
+              日本語名は必須です。ほかの言語が未入力の場合は、日本語名が表示されます。
+            </p>
+          </div>
+
+          <button
+            type="button"
+            id="editor-close-button"
+            class="editor-close-button"
+            aria-label="閉じる"
+          >
+            ×
+          </button>
+        </div>
+
+        <form id="category-form">
+          <input
+            type="hidden"
+            id="editing-category-id"
+          />
+
+          <input
+            type="hidden"
+            id="editing-mode"
+          />
+
+          <input
+            type="hidden"
+            id="editing-type"
+          />
+
+          <div
+            id="translation-fields"
+            class="translation-grid"
+          ></div>
+
+          <div class="form-actions">
+            <button
+              type="submit"
+              class="save-button"
+              data-i18n="save"
+            >
+              保存する
+            </button>
+
+            <button
+              type="button"
+              id="cancel-button"
+              class="cancel-button"
+              data-i18n="cancel"
+            >
+              キャンセル
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- ==============================
+           注意書き
+      ============================== -->
+
+      <aside class="notice-card">
+        <span class="notice-icon" aria-hidden="true">
+          i
+        </span>
+
+        <p data-i18n="deleteNotice">
+          カテゴリを削除しても、すでに登録されている過去の支出・収入データは削除されません。
+        </p>
+      </aside>
+    </main>
+
+    <script src="js/category.js"></script>
+  </body>
+</html>

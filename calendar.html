@@ -3,73 +3,296 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
     <title>節約チェッカー | カレンダー</title>
-    <link rel="stylesheet" href="css/calendar.css" />
+
+    <!-- Google Fonts -->
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS -->
+    <link
+      rel="stylesheet"
+      href="css/calendar.css?v=3"
+    />
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
   </head>
+
   <body>
-    <div class="container">
-      <h1>節約チェッカー</h1>
-      <h2>カレンダー管理</h2>
+    <!-- =========================
+         ヘッダー
+    ========================== -->
+   <header class="logout-wrapper">
+      <button
+        type="button"
+        class="btn-back-mode"
+        onclick="location.href='page1.html'"
+      >
 
-      <div class="nav">
-        <button onclick="location.href = 'normal.html'">入力</button>
-        <button onclick="location.href = 'calendar.html'">カレンダー</button>
-        <button onclick="location.href = 'graph.html'">グラフ</button>
-      </div>
-
-      <!-- 月移動 -->
-      <div class="month-nav">
-        <button onclick="prevMonth()">←</button>
-        <h3 id="monthTitle">2026年5月</h3>
-        <button onclick="nextMonth()">→</button>
-      </div>
-
-      <!-- カレンダー -->
-      <div class="calendar-box">
-        <div class="week-header">
-          <div>日</div>
-          <div>月</div>
-          <div>火</div>
-          <div>水</div>
-          <div>木</div>
-          <div>金</div>
-          <div>土</div>
-        </div>
-
-        <div id="calendar" class="calendar-grid"></div>
-      </div>
-
-      <!-- 月収支 -->
-      <div class="status">
-        <h3>収入：<span id="income">0</span> 円</h3>
-        <h3>支出：<span id="expense">0</span> 円</h3>
-        <h3>貯金：<span id="saving">0</span> 円</h3>
-      </div>
-
-      <!-- 表一覧 -->
-      <div class="table-box">
-        <h3>明細一覧</h3>
-
-        <table>
-          <thead>
-            <tr>
-              <th>日付</th>
-              <th>項目</th>
-              <th>金額</th>
-              <th>操作</th>
-            </tr>
-          </thead>
-
-          <tbody id="listBody"></tbody>
-        </table>
-      </div>
-
-      <button onclick="location.href = 'normal.html'">
-        ← 入力ページへ戻る
+        <span data-i18n="backToMode">
+          ←モード選択画面に戻る
+        </span>
       </button>
-    </div>
 
+      <div class="account-area">
+        <span
+          id="user-display"
+          class="user-status"
+        ></span>
+
+        <button
+          type="button"
+          class="btn-logout"
+          onclick="handleLogout()"
+        >
+
+          <span data-i18n="logout">
+            ログアウト
+          </span>
+        </button>
+      </div>
+    </header>
+
+
+    <!-- =========================
+         メイン
+    ========================== -->
+    <main class="container">
+
+      <!-- ページタイトル -->
+      <div class="page-heading">
+        <h1 data-i18n="appTitle">
+          節約チェッカー
+        </h1>
+
+        <p data-i18n="householdMode">
+          家計簿モード
+        </p>
+      </div>
+
+      <!-- =========================
+           メインナビ
+      ========================== -->
+      <nav
+        class="nav"
+        aria-label="メインメニュー"
+        data-i18n-aria-label="mainMenu"
+      >
+        <button
+          type="button"
+          class="nav-btn"
+          onclick="location.href='normal.html'"
+          data-i18n="input"
+        >
+          入力
+        </button>
+
+        <button
+          type="button"
+          class="nav-btn active"
+          disabled
+          aria-current="page"
+          data-i18n="calendar"
+        >
+          カレンダー
+        </button>
+
+        <button
+          type="button"
+          class="nav-btn"
+          onclick="location.href='graph.html'"
+          data-i18n="graph"
+        >
+          グラフ
+        </button>
+      </nav>
+
+      <!-- =========================
+           PC用2カラムレイアウト
+      ========================== -->
+      <div class="calendar-layout">
+
+        <!-- =========================
+             左側：カレンダー
+        ========================== -->
+        <section class="calendar-column">
+
+          <!-- 月移動 -->
+          <div class="month-nav">
+            <button
+              type="button"
+              onclick="prevMonth()"
+              aria-label="前の月"
+              data-i18n-aria-label="previousMonth"
+            >
+              ←
+            </button>
+
+            <h2 id="monthTitle">
+              2026年5月
+            </h2>
+
+            <button
+              type="button"
+              onclick="nextMonth()"
+              aria-label="次の月"
+              data-i18n-aria-label="nextMonth"
+            >
+              →
+            </button>
+          </div>
+
+          <!-- カレンダー本体 -->
+          <div class="calendar-box">
+
+            <!-- 曜日 -->
+            <div class="week-header">
+              <div data-i18n="sunday">
+                日
+              </div>
+
+              <div data-i18n="monday">
+                月
+              </div>
+
+              <div data-i18n="tuesday">
+                火
+              </div>
+
+              <div data-i18n="wednesday">
+                水
+              </div>
+
+              <div data-i18n="thursday">
+                木
+              </div>
+
+              <div data-i18n="friday">
+                金
+              </div>
+
+              <div data-i18n="saturday">
+                土
+              </div>
+            </div>
+
+            <!-- 日付はJavaScriptで作成 -->
+            <div
+              id="calendar"
+              class="calendar-grid"
+            ></div>
+          </div>
+        </section>
+
+        <!-- =========================
+             右側：集計・明細
+        ========================== -->
+        <section class="details-column">
+
+          <!-- 月間集計 -->
+          <div class="status">
+            <h3>
+              <span data-i18n="incomeLabel">
+                収入：
+              </span>
+
+              <span
+                id="income"
+                class="plus"
+              >
+                0
+              </span>
+
+              <span data-i18n="currency">
+                円
+              </span>
+            </h3>
+
+            <h3>
+              <span data-i18n="expenseLabel">
+                支出：
+              </span>
+
+              <span
+                id="expense"
+                class="minus"
+              >
+                0
+              </span>
+
+              <span data-i18n="currency">
+                円
+              </span>
+            </h3>
+          </div>
+
+          <!-- 明細一覧 -->
+          <div class="table-box">
+            <h3
+              class="table-title"
+              data-i18n="detailsList"
+            >
+              明細一覧
+            </h3>
+
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th data-i18n="date">
+                      日付
+                    </th>
+
+                    <th data-i18n="item">
+                      項目
+                    </th>
+
+                    <th data-i18n="amount">
+                      金額
+                    </th>
+
+                    <th data-i18n="action">
+                      操作
+                    </th>
+                  </tr>
+                </thead>
+
+                <!-- 明細はJavaScriptで作成 -->
+                <tbody id="listBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- JavaScript -->
     <script src="js/calendar.js"></script>
+
+    <!-- Lucide Iconsを表示 -->
+    <script>
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+    </script>
   </body>
 </html>
