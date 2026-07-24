@@ -1103,11 +1103,14 @@ textarea:focus-visible {
   display: inline-flex;
   align-items: center;
   gap: 5px;
+  cursor: pointer;
   padding: 0;
+
   background: transparent;
   color: #8f7f84;
+
   border: none;
-  cursor: pointer;
+
   font-size: 1.1rem;
   font-weight: 500;
 }
@@ -1202,4 +1205,38 @@ textarea:focus-visible {
     width: 16px;
     height: 16px;
   }
+}
+@media (max-width: 480px) {
+  .card {
+    overflow: hidden;
+  }
+
+  .input-area {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .input-area input,
+  .input-area select,
+  .input-area button {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  input[type="date"] {
+    display: block;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    box-sizing: border-box;
+
+    -webkit-appearance: none;
+    appearance: none;
+  }
+}
+input[type="date"]::-webkit-date-and-time-value {
+  text-align: center;
 }

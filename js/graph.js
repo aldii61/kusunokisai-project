@@ -311,6 +311,273 @@ function applyGraphLanguage() {
 }
 
 
+function getTranslatedCategory(category) {
+  const categoryTranslations = {
+    ja: {
+      学費: "学費",
+      家賃: "家賃",
+      光熱費: "光熱費",
+      交通費: "交通費",
+      娯楽費: "娯楽費",
+      サブスク: "サブスク",
+      食費: "食費",
+      クレジットカード: "クレジットカード",
+      クレカ: "クレジットカード",
+      医療費: "医療費",
+      保険代: "保険代",
+      美容: "美容",
+      洋服: "洋服",
+      日用品: "日用品",
+      給料: "給料",
+      臨時収入: "臨時収入",
+      おこづかい: "おこづかい",
+      未分類: "未分類",
+    },
+
+    en: {
+      学費: "Tuition",
+      家賃: "Rent",
+      光熱費: "Utilities",
+      交通費: "Transportation",
+      娯楽費: "Entertainment",
+      サブスク: "Subscriptions",
+      食費: "Food",
+      クレジットカード: "Credit card",
+      クレカ: "Credit card",
+      医療費: "Medical expenses",
+      保険代: "Insurance",
+      美容: "Beauty",
+      洋服: "Clothing",
+      日用品: "Daily necessities",
+      給料: "Salary",
+      臨時収入: "Extra income",
+      おこづかい: "Allowance",
+      未分類: "Uncategorized",
+    },
+
+    my: {
+      学費: "ကျောင်းလခ",
+      家賃: "အိမ်ငှားခ",
+      光熱費: "မီးနှင့်ရေဖိုး",
+      交通費: "သွားလာရေး",
+      娯楽費: "ဖျော်ဖြေရေး",
+      サブスク: "စာရင်းသွင်းဝန်ဆောင်မှု",
+      食費: "အစားအသောက်",
+      クレジットカード: "ခရက်ဒစ်ကတ်",
+      クレカ: "ခရက်ဒစ်ကတ်",
+      医療費: "ဆေးကုသစရိတ်",
+      保険代: "အာမခံ",
+      美容: "အလှအပ",
+      洋服: "အဝတ်အစား",
+      日用品: "နေ့စဉ်သုံးပစ္စည်း",
+      給料: "လစာ",
+      臨時収入: "အပိုဝင်ငွေ",
+      おこづかい: "မုန့်ဖိုး",
+      未分類: "အမျိုးအစားမသတ်မှတ်ရသေး",
+    },
+
+    id: {
+      学費: "Biaya pendidikan",
+      家賃: "Sewa",
+      光熱費: "Utilitas",
+      交通費: "Transportasi",
+      娯楽費: "Hiburan",
+      サブスク: "Langganan",
+      食費: "Makanan",
+      クレジットカード: "Kartu kredit",
+      クレカ: "Kartu kredit",
+      医療費: "Biaya medis",
+      保険代: "Asuransi",
+      美容: "Kecantikan",
+      洋服: "Pakaian",
+      日用品: "Kebutuhan sehari-hari",
+      給料: "Gaji",
+      臨時収入: "Pendapatan tambahan",
+      おこづかい: "Uang saku",
+      未分類: "Tanpa kategori",
+    },
+
+    "zh-CN": {
+      学費: "学费",
+      家賃: "房租",
+      光熱費: "水电燃气费",
+      交通費: "交通费",
+      娯楽費: "娱乐费",
+      サブスク: "订阅服务",
+      食費: "餐饮",
+      クレジットカード: "信用卡",
+      クレカ: "信用卡",
+      医療費: "医疗费",
+      保険代: "保险费",
+      美容: "美容",
+      洋服: "服装",
+      日用品: "日用品",
+      給料: "工资",
+      臨時収入: "临时收入",
+      おこづかい: "零用钱",
+      未分類: "未分类",
+    },
+
+    "zh-TW": {
+      学費: "學費",
+      家賃: "房租",
+      光熱費: "水電瓦斯費",
+      交通費: "交通費",
+      娯楽費: "娛樂費",
+      サブスク: "訂閱服務",
+      食費: "餐飲",
+      クレジットカード: "信用卡",
+      クレカ: "信用卡",
+      医療費: "醫療費",
+      保険代: "保險費",
+      美容: "美容",
+      洋服: "服裝",
+      日用品: "日用品",
+      給料: "薪資",
+      臨時収入: "臨時收入",
+      おこづかい: "零用錢",
+      未分類: "未分類",
+    },
+
+    ru: {
+      学費: "Обучение",
+      家賃: "Аренда",
+      光熱費: "Коммунальные услуги",
+      交通費: "Транспорт",
+      娯楽費: "Развлечения",
+      サブスク: "Подписки",
+      食費: "Питание",
+      クレジットカード: "Кредитная карта",
+      クレカ: "Кредитная карта",
+      医療費: "Медицинские расходы",
+      保険代: "Страхование",
+      美容: "Красота",
+      洋服: "Одежда",
+      日用品: "Товары первой необходимости",
+      給料: "Зарплата",
+      臨時収入: "Дополнительный доход",
+      おこづかい: "Карманные деньги",
+      未分類: "Без категории",
+    },
+
+    vi: {
+      学費: "Học phí",
+      家賃: "Tiền thuê nhà",
+      光熱費: "Điện nước",
+      交通費: "Đi lại",
+      娯楽費: "Giải trí",
+      サブスク: "Dịch vụ đăng ký",
+      食費: "Ăn uống",
+      クレジットカード: "Thẻ tín dụng",
+      クレカ: "Thẻ tín dụng",
+      医療費: "Chi phí y tế",
+      保険代: "Bảo hiểm",
+      美容: "Làm đẹp",
+      洋服: "Quần áo",
+      日用品: "Đồ dùng hằng ngày",
+      給料: "Lương",
+      臨時収入: "Thu nhập thêm",
+      おこづかい: "Tiền tiêu vặt",
+      未分類: "Chưa phân loại",
+    },
+
+    ko: {
+      学費: "학비",
+      家賃: "월세",
+      光熱費: "공과금",
+      交通費: "교통비",
+      娯楽費: "오락비",
+      サブスク: "구독",
+      食費: "식비",
+      クレジットカード: "신용카드",
+      クレカ: "신용카드",
+      医療費: "의료비",
+      保険代: "보험료",
+      美容: "미용",
+      洋服: "의류",
+      日用品: "생활용품",
+      給料: "급여",
+      臨時収入: "임시 수입",
+      おこづかい: "용돈",
+      未分類: "미분류",
+    },
+
+    th: {
+      学費: "ค่าเล่าเรียน",
+      家賃: "ค่าเช่า",
+      光熱費: "ค่าน้ำค่าไฟ",
+      交通費: "ค่าเดินทาง",
+      娯楽費: "ค่าความบันเทิง",
+      サブスク: "บริการสมัครสมาชิก",
+      食費: "ค่าอาหาร",
+      クレジットカード: "บัตรเครดิต",
+      クレカ: "บัตรเครดิต",
+      医療費: "ค่ารักษาพยาบาล",
+      保険代: "ค่าประกัน",
+      美容: "ความงาม",
+      洋服: "เสื้อผ้า",
+      日用品: "ของใช้ประจำวัน",
+      給料: "เงินเดือน",
+      臨時収入: "รายได้พิเศษ",
+      おこづかい: "เงินค่าขนม",
+      未分類: "ไม่จัดหมวดหมู่",
+    },
+
+    es: {
+      学費: "Matrícula",
+      家賃: "Alquiler",
+      光熱費: "Servicios",
+      交通費: "Transporte",
+      娯楽費: "Entretenimiento",
+      サブスク: "Suscripciones",
+      食費: "Alimentación",
+      クレジットカード: "Tarjeta de crédito",
+      クレカ: "Tarjeta de crédito",
+      医療費: "Gastos médicos",
+      保険代: "Seguro",
+      美容: "Belleza",
+      洋服: "Ropa",
+      日用品: "Artículos diarios",
+      給料: "Salario",
+      臨時収入: "Ingresos extra",
+      おこづかい: "Dinero de bolsillo",
+      未分類: "Sin categoría",
+    },
+
+    "pt-BR": {
+      学費: "Mensalidade escolar",
+      家賃: "Aluguel",
+      光熱費: "Contas domésticas",
+      交通費: "Transporte",
+      娯楽費: "Entretenimento",
+      サブスク: "Assinaturas",
+      食費: "Alimentação",
+      クレジットカード: "Cartão de crédito",
+      クレカ: "Cartão de crédito",
+      医療費: "Despesas médicas",
+      保険代: "Seguro",
+      美容: "Beleza",
+      洋服: "Roupas",
+      日用品: "Itens do dia a dia",
+      給料: "Salário",
+      臨時収入: "Renda extra",
+      おこづかい: "Mesada",
+      未分類: "Sem categoria",
+    },
+  };
+
+  const languageCategories =
+    categoryTranslations[currentLanguage] ||
+    categoryTranslations.ja;
+
+  return (
+    languageCategories[category] ||
+    category ||
+    getGraphTexts().noData
+  );
+}
+
+
 /* ==============================
    保存データの読み込み
 ============================== */
@@ -608,14 +875,25 @@ function createDoughnutChart(
   chartData,
   colors
 ) {
-  const labels =
+  const originalLabels =
     Object.keys(chartData);
 
+  const labels =
+    originalLabels.map(
+      (category) =>
+        getTranslatedCategory(category)
+    );
+
   const values =
-    Object.values(chartData);
+    originalLabels.map(
+      (category) =>
+        chartData[category]
+    );
 
   const hasData =
     labels.length > 0;
+
+  // この下は今まで通り
 
   return new Chart(
     canvas,

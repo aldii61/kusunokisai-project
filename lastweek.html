@@ -10,110 +10,307 @@
 
     <title>先週の入力漏れ | 節約チェッカー</title>
 
-    <link rel="stylesheet" href="css/lastweek.css" />
+    <link
+      rel="stylesheet"
+      href="css/lastweek.css"
+    />
+
+    <script src="https://unpkg.com/lucide@latest"></script>
   </head>
 
   <body>
     <main class="container">
-<header class="top-area">
-  <div>
-    <p class="app-name">先週の入力漏れ</p>
-  </div>
-</header>
+      <header class="top-area">
+        <div>
+          <p
+            class="app-name"
+            data-i18n="pageTitle"
+          >
+            先週の入力漏れ
+          </p>
+        </div>
+      </header>
 
       <section class="week-card">
-
         <h2 id="last-week-label">
           読み込み中...
         </h2>
 
-        <p class="week-help">
+        <p
+          class="week-help"
+          data-i18n="weekHelp"
+        >
           ここで追加した支出は、先週の履歴に保存されます。
         </p>
       </section>
 
       <section class="input-card">
-        <div class="form-group">
-          <label for="amount">金額</label>
+        <div class="expense-form-grid">
+          <div class="form-column">
+            <div class="form-item">
+              <label
+                for="amount"
+                data-i18n="amount"
+              >
+                金額
+              </label>
 
-          <div class="amount-input-wrap">
-            <input
-              type="number"
-              id="amount"
-              min="1"
-              inputmode="numeric"
-              placeholder="例：1200"
-            />
+              <div class="amount-input-wrap">
+                <span class="yen-mark">
+                  ¥
+                </span>
 
-            <span class="input-unit">円</span>
+                <input
+                  type="number"
+                  id="amount"
+                  min="1"
+                  inputmode="numeric"
+                  placeholder="例）1200"
+                  data-i18n-placeholder="amountPlaceholder"
+                />
+
+                <span
+                  class="amount-unit"
+                  data-i18n="yenUnit"
+                >
+                  円
+                </span>
+              </div>
+            </div>
+
+            <div class="form-item">
+              <label
+                for="category"
+                data-i18n="category"
+              >
+                カテゴリ
+              </label>
+
+              <select id="category">
+                <option
+                  value="食費"
+                  data-i18n="categoryFood"
+                >
+                  食費
+                </option>
+
+                <option
+                  value="交通費"
+                  data-i18n="categoryTransport"
+                >
+                  交通費
+                </option>
+
+                <option
+                  value="日用品"
+                  data-i18n="categoryDailyGoods"
+                >
+                  日用品
+                </option>
+
+                <option
+                  value="娯楽"
+                  data-i18n="categoryEntertainment"
+                >
+                  娯楽
+                </option>
+
+                <option
+                  value="学習"
+                  data-i18n="categoryStudy"
+                >
+                  学習
+                </option>
+
+                <option
+                  value="衝動買い"
+                  data-i18n="categoryImpulse"
+                >
+                  衝動買い
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-column">
+            <div class="form-item satisfaction-form-item">
+              <span
+                class="form-label"
+                data-i18n="satisfaction"
+              >
+                満足度
+              </span>
+
+              <div
+                class="satisfaction-group"
+                role="radiogroup"
+                aria-label="満足度"
+              >
+                <label class="satisfaction-item">
+                  <input
+                    type="radio"
+                    name="satisfaction"
+                    value="1"
+                  />
+
+                  <span class="face-icon">
+                    <i data-lucide="frown"></i>
+                  </span>
+
+                  <span
+                    class="face-label"
+                    data-i18n="satisfactionRegret"
+                  >
+                    後悔
+                  </span>
+                </label>
+
+                <label class="satisfaction-item">
+                  <input
+                    type="radio"
+                    name="satisfaction"
+                    value="2"
+                  />
+
+                  <span class="face-icon">
+                    <i data-lucide="annoyed"></i>
+                  </span>
+
+                  <span
+                    class="face-label"
+                    data-i18n="satisfactionPoor"
+                  >
+                    いまいち
+                  </span>
+                </label>
+
+                <label class="satisfaction-item">
+                  <input
+                    type="radio"
+                    name="satisfaction"
+                    value="3"
+                    checked
+                  />
+
+                  <span class="face-icon">
+                    <i data-lucide="meh"></i>
+                  </span>
+
+                  <span
+                    class="face-label"
+                    data-i18n="satisfactionNormal"
+                  >
+                    普通
+                  </span>
+                </label>
+
+                <label class="satisfaction-item">
+                  <input
+                    type="radio"
+                    name="satisfaction"
+                    value="4"
+                  />
+
+                  <span class="face-icon">
+                    <i data-lucide="smile"></i>
+                  </span>
+
+                  <span
+                    class="face-label"
+                    data-i18n="satisfactionSatisfied"
+                  >
+                    満足
+                  </span>
+                </label>
+
+                <label class="satisfaction-item">
+                  <input
+                    type="radio"
+                    name="satisfaction"
+                    value="5"
+                  />
+
+                  <span class="face-icon">
+                    <i data-lucide="laugh"></i>
+                  </span>
+
+                  <span
+                    class="face-label"
+                    data-i18n="satisfactionVerySatisfied"
+                  >
+                    大満足
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <label class="round-checkbox-label">
+              <input
+                type="checkbox"
+                id="is-necessary"
+              />
+
+              <span class="checkmark"></span>
+
+              <span data-i18n="necessaryCheck">
+                必需品だったらチェック
+              </span>
+            </label>
           </div>
         </div>
-
-        <div class="form-group">
-          <label for="category">カテゴリ</label>
-
-          <select id="category">
-            <option value="食費">食費</option>
-            <option value="交通費">交通費</option>
-            <option value="娯楽">娯楽</option>
-            <option value="衝動買い">衝動買い</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="sat">満足度</label>
-
-          <input
-            type="number"
-            id="sat"
-            min="1"
-            max="5"
-            placeholder="1〜5"
-          />
-
-          <p class="rating-help">
-            1：最低　〜　5：最高
-          </p>
-        </div>
-
-        <label class="checkbox-label">
-          <input type="checkbox" id="is-necessary" />
-
-          <span class="checkbox-text">
-            必需品だったらチェック
-          </span>
-        </label>
 
         <button
           type="button"
           id="add-button"
           class="btn-add"
         >
-          入力リストに追加
+          <i data-lucide="circle-plus"></i>
+
+          <span data-i18n="add">
+            入力リストに追加
+          </span>
         </button>
       </section>
 
       <section class="draft-card">
         <div class="draft-header">
           <div>
-            <p class="draft-label">
+            <p
+              class="draft-label"
+              data-i18n="draftLabel"
+            >
               追加する支出
             </p>
 
             <h2>
-              合計
+              <span data-i18n="total">
+                合計
+              </span>
+
               <span id="draft-total">0</span>
-              円
+
+              <span data-i18n="yenUnit">
+                円
+              </span>
             </h2>
           </div>
 
-          <span id="draft-count" class="draft-count">
+          <span
+            id="draft-count"
+            class="draft-count"
+          >
             0件
           </span>
         </div>
 
-        <div id="draft-log" class="draft-log">
-          <p class="empty-message">
+        <div
+          id="draft-log"
+          class="draft-log"
+        >
+          <p
+            class="empty-message"
+            data-i18n="empty"
+          >
             まだ入力されていません。
           </p>
         </div>
@@ -123,7 +320,11 @@
           id="save-button"
           class="btn-save"
         >
-          先週の履歴に保存
+          <i data-lucide="save"></i>
+
+          <span data-i18n="save">
+            先週の履歴に保存
+          </span>
         </button>
       </section>
 
@@ -133,13 +334,18 @@
           class="btn-sub"
           onclick="window.location.href = 'index.html'"
         >
-          ← メイン画面に戻る
-        </button>
+          <i data-lucide="arrow-left"></i>
 
-       
+          <span data-i18n="back">
+            メイン画面に戻る
+          </span>
+        </button>
       </div>
     </main>
 
-    <script src="js/lastweek.js" defer></script>
+    <script
+      src="js/lastweek.js"
+      defer
+    ></script>
   </body>
 </html>

@@ -146,9 +146,11 @@ const calendarTranslations = {
 
     monthFormat: (year, month) =>
       `${year}年${month}月`,
+    memo: "メモ",
   },
 
   en: {
+    memo: "Memo",
     pageTitle:
       "Savings Checker | Calendar",
 
@@ -233,6 +235,7 @@ const calendarTranslations = {
   },
 
   my: {
+     memo: "မှတ်စု",
     pageTitle:
       "ချွေတာရေး စစ်ဆေးမှု | ပြက္ခဒိန်",
 
@@ -317,6 +320,8 @@ const calendarTranslations = {
   },
 
   id: {
+    memo: "Catatan",
+
     pageTitle:
       "Pemeriksa Penghematan | Kalender",
 
@@ -401,6 +406,7 @@ const calendarTranslations = {
   },
 
   "zh-CN": {
+    memo: "备注",
     pageTitle:
       "省钱检查 | 日历",
 
@@ -485,6 +491,7 @@ const calendarTranslations = {
   },
 
   "zh-TW": {
+     memo: "備註",
     pageTitle:
       "省錢檢查 | 日曆",
 
@@ -569,6 +576,7 @@ const calendarTranslations = {
   },
 
   ru: {
+     memo: "Заметка",
     pageTitle:
       "Контроль экономии | Календарь",
 
@@ -653,6 +661,7 @@ const calendarTranslations = {
   },
 
   vi: {
+    memo: "Ghi chú",
     pageTitle:
       "Kiểm tra tiết kiệm | Lịch",
 
@@ -737,6 +746,7 @@ const calendarTranslations = {
   },
 
   ko: {
+     memo: "메모",
     pageTitle:
       "절약 체크 | 캘린더",
 
@@ -821,6 +831,7 @@ const calendarTranslations = {
   },
 
   th: {
+     memo: "บันทึก",
     pageTitle:
       "ตรวจสอบการประหยัด | ปฏิทิน",
 
@@ -905,6 +916,7 @@ const calendarTranslations = {
   },
 
   es: {
+    memo: "Nota",
     pageTitle:
       "Control de ahorro | Calendario",
 
@@ -989,6 +1001,7 @@ const calendarTranslations = {
   },
 
   "pt-BR": {
+    memo: "Observação",
     pageTitle:
       "Controle de economia | Calendário",
 
@@ -1073,6 +1086,7 @@ const calendarTranslations = {
   },
 
     ne: {
+       memo: "नोट",
     pageTitle:
       "बचत जाँचकर्ता | पात्रो",
 
@@ -1160,6 +1174,7 @@ const calendarTranslations = {
   },
 
   si: {
+     memo: "සටහන",
     pageTitle:
       "ඉතිරිකිරීම් පරීක්ෂකය | දින දර්ශනය",
 
@@ -1929,12 +1944,16 @@ function showTable() {
             </td>
 
             <td>
-              ${category}
-            </td>
+  ${category}
+</td>
 
-            <td class="${className}">
-              ${mark}${formatCurrency(amount)}
-            </td>
+<td>
+  ${item.memo || "－"}
+</td>
+
+<td class="${className}">
+  ${mark}${formatCurrency(amount)}
+</td>
 
             <td>
               <button
@@ -1954,7 +1973,7 @@ function showTable() {
     listBody.innerHTML = `
       <tr>
         <td
-          colspan="4"
+          colspan="5"
           class="empty-message"
         >
           ${texts.emptyMonth}

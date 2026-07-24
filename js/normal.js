@@ -96,7 +96,7 @@ receiptReadServerError:
   "日付と金額を正しく入力してください。",
 
 inputComplete:
-  "入力完了✔",
+  "入力完了",
 
 receiptGuide:
   "レシート全体が映るようにしてください",
@@ -1645,6 +1645,7 @@ async function startCamera() {
     isOpeningCamera = false;
   }
 }
+
 /* =========================================================
    12. 写真を撮影してOCRへ送信
 ========================================================= */
@@ -1652,6 +1653,24 @@ async function startCamera() {
 async function takePhoto() {
   const texts =
     getNormalTexts();
+
+  /* 1ブラウザにつきOCRは1回まで */
+  const OCR_LIMIT_KEY =
+    "receiptOcrUsed";
+
+  if (
+    localStorage.getItem(
+      OCR_LIMIT_KEY
+    ) === "true"
+  ) {
+    alert(
+      "レシート読み取り体験は1回までです"
+    );
+
+    closeCamera();
+
+    return;
+  }
 
   /*
     自動撮影と手動撮影が同時に実行されるのを防ぐ
@@ -1675,10 +1694,6 @@ async function takePhoto() {
 
   captureBtn.disabled = true;
 
-  /*
-    手動で押した場合は、
-    予約されている自動撮影を解除
-  */
   clearAutoCaptureTimer();
 
   scanText.textContent =
@@ -1716,7 +1731,7 @@ async function takePhoto() {
 
     const response =
       await fetch(
-        "http://127.0.0.1:5000/ocr",
+        "/ocr",
         {
           method: "POST",
           body: formData,
@@ -1741,11 +1756,21 @@ async function takePhoto() {
       receipt
     );
 
+    /*
+      OCR成功時だけ
+      「1回使用済み」にする
+    */
+    localStorage.setItem(
+      OCR_LIMIT_KEY,
+      "true"
+    );
+
     closeCamera();
 
     showToast(
       texts.receiptReadSuccess
     );
+
   } catch (error) {
     console.error(
       texts.receiptReadFailedLog,
@@ -1760,11 +1785,11 @@ async function takePhoto() {
     alert(
       texts.receiptReadServerError
     );
+
   } finally {
     isReadingReceipt = false;
   }
 }
-
 /* =========================================================
    13. Canvasを画像Blobへ変換
 ========================================================= */
@@ -2000,7 +2025,6 @@ function decideCategory(receipt) {
   if (
     normalizedText.includes("無印") ||
     normalizedText.includes("ドンキ") ||
-    normalizedText.includes("イオン") ||
     normalizedText.includes("ロフト") ||
     normalizedText.includes("daiso") ||
     normalizedText.includes("ダイソー") ||
