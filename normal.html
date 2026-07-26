@@ -194,79 +194,12 @@
             追加
           </button>
 
-          <!-- カメラ起動ボタン -->
-          <button
-            type="button"
-            id="startBtn"
-            data-i18n="readReceipt"
-          >
-            レシートを読み取る
-          </button>
+          
         </div>
       </section>
     </main>
 
-    <!-- =========================
-         全画面カメラ
-    ========================== -->
-    <div
-      id="cameraScreen"
-      class="camera-screen"
-    >
-      <div class="camera-header">
-        <button
-          type="button"
-          id="closeCameraBtn"
-          class="close-camera-btn"
-          data-i18n="back"
-        >
-          ← 戻る
-        </button>
-
-        <p data-i18n="alignReceipt">
-          レシートを枠内に合わせてください
-        </p>
-      </div>
-
-      <!-- カメラ表示部分 -->
-      <div class="camera-wrap">
-        <video
-          id="camera"
-          autoplay
-          muted
-          playsinline
-          aria-label="レシート撮影用カメラ"
-          data-i18n-aria-label="receiptCamera"
-        ></video>
-
-        <div class="scan-frame"></div>
-
-        <p
-          id="scanText"
-          data-i18n="startingCamera"
-        >
-          カメラを起動しています
-        </p>
-      </div>
-
-      <!-- カメラ操作 -->
-      <div class="camera-actions">
-        <button
-          type="button"
-          id="captureBtn"
-          class="capture-btn"
-          data-i18n="captureNow"
-        >
-          今すぐ読み取る
-        </button>
-      </div>
-    </div>
-
-    <!-- 撮影用canvas -->
-    <canvas
-      id="canvas"
-      hidden
-    ></canvas>
+    
 
     <script src="js/normal.js"></script>
   </body>
