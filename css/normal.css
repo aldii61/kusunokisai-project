@@ -1,6 +1,9 @@
 /* normal.css */
 
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap");
+@import url(
+  "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
+);
+
 
 /* ==============================
    カラー設定
@@ -31,8 +34,10 @@
   --border: #e9e1e4;
   --input-bg: #fdfcfc;
 
-  --shadow: 0 5px 18px rgba(89, 66, 76, 0.08);
+  --shadow:
+    0 5px 18px rgba(89, 66, 76, 0.08);
 }
+
 
 /* ==============================
    基本設定
@@ -61,7 +66,9 @@ body {
   background: var(--bg);
   color: var(--text);
 
-  font-family: "Noto Sans JP", sans-serif;
+  font-family:
+    "Noto Sans JP",
+    sans-serif;
 
   font-weight: 400;
   line-height: 1.7;
@@ -76,6 +83,7 @@ select,
 textarea {
   font-family: inherit;
 }
+
 
 /* ==============================
    ログイン情報・ログアウト
@@ -136,6 +144,7 @@ textarea {
   transform: scale(0.97);
 }
 
+
 /* ==============================
    メインコンテナ
 ============================== */
@@ -147,6 +156,7 @@ textarea {
   margin: 0 auto;
   padding: 26px 20px 40px;
 }
+
 
 /* ==============================
    ページタイトル
@@ -192,6 +202,7 @@ h3 {
   font-weight: 700;
 }
 
+
 /* ==============================
    メインナビゲーション
 ============================== */
@@ -231,7 +242,8 @@ h3 {
 
   cursor: pointer;
 
-  box-shadow: 0 2px 7px rgba(89, 66, 76, 0.04);
+  box-shadow:
+    0 2px 7px rgba(89, 66, 76, 0.04);
 
   transition:
     background-color 0.18s ease,
@@ -250,6 +262,7 @@ h3 {
   transform: translateY(-1px);
 }
 
+
 /* 現在表示しているページ */
 
 .nav-btn.active,
@@ -264,10 +277,13 @@ h3 {
   cursor: default;
   opacity: 1;
 
-  box-shadow: inset 0 0 0 1px rgba(159, 95, 119, 0.05);
+  box-shadow:
+    inset 0 0 0 1px
+    rgba(159, 95, 119, 0.05);
 
   transform: none;
 }
+
 
 /* ==============================
    共通カード
@@ -294,6 +310,7 @@ h3 {
   text-align: left;
 }
 
+
 /* ==============================
    入力エリア
 ============================== */
@@ -318,6 +335,7 @@ h3 {
   line-height: 1.5;
   text-align: left;
 }
+
 
 /* ==============================
    入力欄
@@ -377,7 +395,9 @@ textarea:focus {
 
   border-color: var(--primary);
 
-  box-shadow: 0 0 0 4px rgba(201, 134, 160, 0.14);
+  box-shadow:
+    0 0 0 4px
+    rgba(201, 134, 160, 0.14);
 }
 
 select {
@@ -388,6 +408,7 @@ select option {
   background: #ffffff;
   color: var(--text);
 }
+
 
 /* ==============================
    登録ボタン
@@ -416,7 +437,9 @@ select option {
 
   cursor: pointer;
 
-  box-shadow: 0 4px 10px rgba(83, 133, 106, 0.16);
+  box-shadow:
+    0 4px 10px
+    rgba(83, 133, 106, 0.16);
 
   transition:
     background-color 0.18s ease,
@@ -427,7 +450,9 @@ select option {
 .input-area button:not(#startBtn):hover {
   background: var(--success-dark);
 
-  box-shadow: 0 6px 14px rgba(83, 133, 106, 0.2);
+  box-shadow:
+    0 6px 14px
+    rgba(83, 133, 106, 0.2);
 
   transform: translateY(-1px);
 }
@@ -435,6 +460,7 @@ select option {
 .input-area button:not(#startBtn):active {
   transform: scale(0.98);
 }
+
 
 /* ==============================
    カメラ起動ボタン
@@ -462,7 +488,9 @@ select option {
 
   cursor: pointer;
 
-  box-shadow: 0 4px 10px rgba(93, 130, 145, 0.16);
+  box-shadow:
+    0 4px 10px
+    rgba(93, 130, 145, 0.16);
 
   transition:
     background-color 0.18s ease,
@@ -497,6 +525,7 @@ select option {
   line-height: 1.6;
 }
 
+
 /* ==============================
    履歴・ログ
 ============================== */
@@ -523,6 +552,7 @@ select option {
 #log p:last-child {
   border-bottom: none;
 }
+
 
 /* ==============================
    グラフ
@@ -558,6 +588,7 @@ canvas.chart {
   border-radius: 16px;
 }
 
+
 /* ==============================
    設定ボタン
 ============================== */
@@ -584,7 +615,9 @@ canvas.chart {
 
   cursor: pointer;
 
-  box-shadow: 0 4px 10px rgba(159, 95, 119, 0.14);
+  box-shadow:
+    0 4px 10px
+    rgba(159, 95, 119, 0.14);
 
   transition:
     background-color 0.18s ease,
@@ -600,6 +633,7 @@ canvas.chart {
 .setting-btn:active {
   transform: scale(0.98);
 }
+
 
 /* ==============================
    全画面カメラ
@@ -630,6 +664,7 @@ canvas.chart {
 body.camera-open {
   overflow: hidden;
 }
+
 
 /* ==============================
    カメラ上部
@@ -688,6 +723,7 @@ body.camera-open {
   background: rgba(255, 255, 255, 0.2);
 }
 
+
 /* ==============================
    カメラ映像
 ============================== */
@@ -710,7 +746,8 @@ body.camera-open {
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 18px;
 
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.28);
 }
 
 #camera {
@@ -721,6 +758,7 @@ body.camera-open {
 
   object-fit: cover;
 }
+
 
 /* ==============================
    レシート読み取り枠
@@ -745,7 +783,8 @@ body.camera-open {
 
   pointer-events: none;
 
-  animation: pulse 1.8s ease-in-out infinite;
+  animation:
+    pulse 1.8s ease-in-out infinite;
 }
 
 #scanText {
@@ -775,6 +814,7 @@ body.camera-open {
   backdrop-filter: blur(5px);
 }
 
+
 /* ==============================
    撮影ボタンエリア
 ============================== */
@@ -784,7 +824,10 @@ body.camera-open {
 
   width: 100%;
 
-  padding: 12px 20px calc(12px + env(safe-area-inset-bottom));
+  padding:
+    12px
+    20px
+    calc(12px + env(safe-area-inset-bottom));
 
   background: #211e20;
 
@@ -828,6 +871,7 @@ body.camera-open {
   transform: scale(0.98);
 }
 
+
 /* ==============================
    データがない場合
 ============================== */
@@ -841,6 +885,7 @@ body.camera-open {
   text-align: center;
 }
 
+
 /* ==============================
    フォーカス
 ============================== */
@@ -849,10 +894,13 @@ button:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-  outline: 3px solid rgba(201, 134, 160, 0.3);
+  outline:
+    3px solid
+    rgba(201, 134, 160, 0.3);
 
   outline-offset: 2px;
 }
+
 
 /* ==============================
    アニメーション
@@ -874,23 +922,30 @@ textarea:focus-visible {
 
 @keyframes pulse {
   0% {
-    transform: translate(-50%, -50%) scale(1);
+    transform:
+      translate(-50%, -50%)
+      scale(1);
 
     opacity: 0.78;
   }
 
   50% {
-    transform: translate(-50%, -50%) scale(1.01);
+    transform:
+      translate(-50%, -50%)
+      scale(1.01);
 
     opacity: 1;
   }
 
   100% {
-    transform: translate(-50%, -50%) scale(1);
+    transform:
+      translate(-50%, -50%)
+      scale(1);
 
     opacity: 0.78;
   }
 }
+
 
 /* ==============================
    スマートフォン
@@ -974,6 +1029,7 @@ textarea:focus-visible {
   }
 }
 
+
 /* ==============================
    PC表示
 ============================== */
@@ -1003,6 +1059,7 @@ textarea:focus-visible {
     margin-bottom: 26px;
   }
 
+
   /*
     入力カードをカレンダー・グラフと
     同じ横幅いっぱいにする
@@ -1015,7 +1072,10 @@ textarea:focus-visible {
     margin-right: 0;
     margin-bottom: 26px;
 
-    padding: 46px 42px 48px;
+    padding:
+      46px
+      42px
+      48px;
   }
 
   /*
@@ -1023,7 +1083,8 @@ textarea:focus-visible {
   */
   .input-area {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
 
     column-gap: 24px;
     row-gap: 24px;
@@ -1075,7 +1136,10 @@ textarea:focus-visible {
     width: 100%;
     max-width: none;
 
-    margin: 0 0 20px;
+    margin:
+      0
+      0
+      20px;
   }
 
   .btn-mode,
@@ -1097,13 +1161,14 @@ textarea:focus-visible {
   padding: 10px 24px;
 
   background: rgba(255, 255, 255, 0.96);
+
 }
 
 .btn-back-mode {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  cursor: pointer;
+
   padding: 0;
 
   background: transparent;
@@ -1135,6 +1200,7 @@ textarea:focus-visible {
 ======================================== */
 
 @media (max-width: 560px) {
+
   .logout-wrapper {
     display: grid;
 
@@ -1151,6 +1217,7 @@ textarea:focus-visible {
     padding: 10px 12px;
   }
 
+
   /* モード選択画面に戻る */
   .btn-back-mode {
     min-width: 0;
@@ -1166,6 +1233,7 @@ textarea:focus-visible {
     white-space: nowrap;
   }
 
+
   /* 名前＋ログアウト */
   .account-area {
     display: flex;
@@ -1176,6 +1244,7 @@ textarea:focus-visible {
 
     min-width: 0;
   }
+
 
   /* ユーザー名 */
   .user-status {
@@ -1189,6 +1258,7 @@ textarea:focus-visible {
 
     text-overflow: ellipsis;
   }
+
 
   /* ログアウト */
   .btn-logout {
@@ -1207,6 +1277,7 @@ textarea:focus-visible {
   }
 }
 @media (max-width: 480px) {
+
   .card {
     overflow: hidden;
   }
@@ -1236,7 +1307,9 @@ textarea:focus-visible {
     -webkit-appearance: none;
     appearance: none;
   }
-}
-input[type="date"]::-webkit-date-and-time-value {
+}input[type="date"]::-webkit-date-and-time-value {
   text-align: center;
+}
+.input-area > button {
+  grid-column: 1 / -1;
 }
